@@ -83,5 +83,8 @@
         "main": "client/shim.min"
       }
     }
+  },
+  "dependencies": {
+    "gulp-less": "^3.0.5"
   }
 }
