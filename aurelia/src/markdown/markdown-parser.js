@@ -26,7 +26,7 @@ export default class MarkdownParser {
                 this.inUl = true;
             }
             parsedLineVal += line.replace(this.createRegex(UL_MATCH, ALL), (line, match, rest) => {
-                return this.wrapWithTag('li', rest);
+                return this.wrapWithTag('li', this.parseInline(rest));
             });
         }
         else if (line.match(this.createRegex(OL_MATCH))) {
@@ -35,7 +35,7 @@ export default class MarkdownParser {
                 this.inOl = true;
             }
             parsedLineVal += line.replace(this.createRegex(OL_MATCH, ALL), (line, match, rest) => {
-                return this.wrapWithTag('li', rest);
+                return this.wrapWithTag('li', this.parseInline(rest));
             });
         }
         else {
@@ -50,7 +50,7 @@ export default class MarkdownParser {
 
             if (line.match(/^#+/)) {
                 parsedLineVal += line.replace(/(^\#+)(.*)/, (line, match, rest) => {
-                    return this.wrapWithTag(('h' + (match.length < 7 ? match.length : 6)), rest.trim());
+                    return this.wrapWithTag(('h' + (match.length < 7 ? match.length : 6)), this.parseInline(rest));
                 });
             }
             else {
@@ -75,6 +75,10 @@ export default class MarkdownParser {
 
     wrapWithTag(tag, content) {
         return this.makeStartTag(tag) + content + this.makeEndTag(tag);
+    }
+    
+    parseInline (line) {
+        return line.trim().replace('&', '&amp;').replace('<', '&lt;');
     }
 
     createRegex() {

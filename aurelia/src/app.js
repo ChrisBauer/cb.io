@@ -12,7 +12,8 @@ export class App {
         '* something else\n' +
         '1. first\n' + 
         '2. second\n' +
-        '1. third\n'
+        '1. third\n' +
+        ''
         ;
     }
 //   configureRouter(config, router) {
