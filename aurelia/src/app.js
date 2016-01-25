@@ -1,20 +1,22 @@
 export class App {
     constructor () {
-        this.test = '' +
-        '# H1\n' +
-        '## H2\n' +
-        '### H3\n' +
-        '#### H4\n' + 
-        '##### H5\n' +
-        '###### H6\n' +
-        'some text\n' +
-        '+ something\n' +
-        '* something else\n' +
-        '1. first\n' + 
-        '2. second\n' +
-        '1. third\n' +
-        ''
-        ;
+        // this.test = '' +
+        // '# H1\n' +
+        // '## H2\n' +
+        // '### H3\n' +
+        // '#### H4\n' + 
+        // '##### H5\n' +
+        // '###### H6\n' +
+        // 'some text\n' +
+        // '+ something\n' +
+        // '* something else\n' +
+        // '\n' +
+        // '\n' +
+        // '1. first\n' + 
+        // '2. second\n' +
+        // '1. third\n' +
+        // ''
+        // ;
     }
 //   configureRouter(config, router) {
 //     config.title = 'Aurelia';
