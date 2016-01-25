@@ -20,7 +20,7 @@ router.get('/resume', function (req, res, next) {
     table.orderBy({ index: r.desc('tstamp') }).limit(1).run(conn)
         .then(function (cursor) {
             cursor.toArray(function (e, resume) {
-                res.json(resume);
+                res.json(resume[0]);
             });
         })
         .catch(function (e) {
