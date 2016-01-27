@@ -20,7 +20,22 @@ var SwapPage = React.createClass({
 	}
 });
 
+var Section = React.createClass({
+	render: function () {
+		return (
+			<section>
+				<h3>{this.props.title}</h3>
+				<p>{this.props.content}</p>
+			</section>
+		);
+	}
+});
+
 ReactDOM.render(
-	<Header />,
+	<div>
+		<Header />
+		<Section title="About" content="Lorem Ipsum" />
+		<Section title="Resume" content="Resume" />
+	</div>,
 	document.getElementById('main')
 );
