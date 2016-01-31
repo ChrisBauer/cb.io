@@ -13,10 +13,12 @@ var conn,
 r.connect(connectionInfo).then(function (c) {
     conn = c;
     table = r.db('cbio').table('resume');
+    console.log('connected');
 });
 
 /* GET home page. */
 router.get('/resume', function (req, res, next) {
+    console.log('received request at /resume');
     table.orderBy({ index: r.desc('tstamp') }).limit(1).run(conn)
         .then(function (cursor) {
             cursor.toArray(function (e, resume) {

@@ -1,7 +1,7 @@
 var React = require('react');
 var SwapPage = require('./swap-page');
 
-var Header = React.createClass({
+module.exports = React.createClass({
 	render: function () {
 		return (
 			<header>
@@ -11,8 +11,3 @@ var Header = React.createClass({
 		);
 	}
 });
-
-module.exports = {
-	Header: Header,
-	SwapPage: SwapPage
-};
