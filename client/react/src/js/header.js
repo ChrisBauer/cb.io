@@ -1,20 +1,13 @@
 var React = require('react');
+var SwapPage = require('./swap-page');
 
 var Header = React.createClass({
 	render: function () {
 		return (
 			<header>
-				<div class="title">Chris Bauer</div>
+				<div className="title">Chris Bauer</div>
 				<SwapPage />
 			</header>
-		);
-	}
-});
-
-var SwapPage = React.createClass({
-	render: function () {
-		return (
-			<div className="swap-page">Swap Page</div>
 		);
 	}
 });
