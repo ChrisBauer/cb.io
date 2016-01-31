@@ -34,6 +34,12 @@ var Section = React.createClass({
 ReactDOM.render(
 	<div>
 		<Header />
+	</div>,
+	document.getElementById('header')
+);
+
+ReactDOM.render(
+	<div>
 		<Section title="About" content="Lorem Ipsum" />
 		<Section title="Resume" content="Resume" />
 	</div>,
