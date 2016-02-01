@@ -3,8 +3,8 @@ var ReactDOM = require('react-dom');
 var Header = require('./components/header');
 var Section = require('./components/section');
 
-const ABOUT_URL = 'test';
-const RESUME_URL = 'other'
+const ABOUT_URL = 'http://localhost:9000/rethink/about';
+const RESUME_URL = 'http://localhost:9000/rethink/resume';
 
 ReactDOM.render(
 	<div>

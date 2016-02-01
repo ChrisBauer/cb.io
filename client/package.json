@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-	"build-react-min": "browserify react/src/js/main.js -t [ babelify --presets [ react ] ] -d -p [minifyify --map react/target/js/main.js.map --output react/target/js/main.js.map] > react/target/js/main.js",
+    "build-react-min": "browserify react/src/js/main.js -t [ babelify --presets [ react ] ] -d -p [minifyify --map react/target/js/main.js.map --output react/target/js/main.js.map] > react/target/js/main.js",
     "build-react": "browserify -t [ babelify --presets [ react ] ] react/src/js/main.js -o react/target/js/main.js"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "jade": "~1.11.0",
+    "marked": "^0.3.5",
     "minifyify": "^7.2.1",
     "morgan": "~1.6.1",
     "react": "^0.14.6",

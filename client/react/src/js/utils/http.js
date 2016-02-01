@@ -9,7 +9,7 @@ const OPS = [
 
 module.exports = function HTTP () {
 
-	this.http = function (url, method, data, headers) {
+	this.http = function executeHttpCall (url, method, data, headers) {
 		return new Promise (function (resolve, reject) {
 
 			var request = new XMLHttpRequest(),
@@ -41,11 +41,27 @@ module.exports = function HTTP () {
 		});
 	}.bind(this);
 
-	this.get = function (url, data, headers) {
+	this.get = function httpGET (url, data, headers) {
 		return this.http(url, OPS[0], data, headers);
 	};
 
-	this.post = function (url, data, headers) { 
+	this.post = function httpPOST (url, data, headers) { 
 		return this.http(url, OPS[1], data, headers);
 	};
+
+	this.parseJSON = function parseResponseJSON (response) {
+		try {
+			response.data = JSON.parse(response.data);
+			return response;
+		}
+		catch (ex) {
+			console.error('JSON parsing failed', ex);
+			throw (ex);
+		}
+	};			
+
+
+
+
+
 };
