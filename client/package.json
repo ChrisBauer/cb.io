@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node ./express/bin/www",
     "build-react-min": "browserify react/src/js/main.js -t [ babelify --presets [ react ] ] -d -p [minifyify --map react/target/js/main.js.map --output react/target/js/main.js.map] > react/target/js/main.js",
     "build-react": "browserify -t [ babelify --presets [ react ] ] react/src/js/main.js -o react/target/js/main.js"
   },
@@ -15,6 +15,8 @@
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "express": "~4.13.1",
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.5",
     "jade": "~1.11.0",
     "marked": "^0.3.5",
     "minifyify": "^7.2.1",
@@ -22,5 +24,12 @@
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp-minify-css": "^1.2.3",
+    "gulp-sourcemaps": "^1.6.0",
+    "run-sequence": "^1.1.5",
+    "vinyl-paths": "^2.1.0"
   }
 }
