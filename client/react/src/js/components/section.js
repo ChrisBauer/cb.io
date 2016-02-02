@@ -20,11 +20,14 @@ module.exports = React.createClass({
 		return { __html: marked(mdContent, {sanitize: true}) };
 	},
     render: function () {
+		var lc = this.props.title.toLowerCase();
         return (
-            <section>
-				<h3>{this.props.title}</h3>
-				<p dangerouslySetInnerHTML={this.state.content} />
-			</section>
-        )
+			
+				<section className={lc}>
+					<a id={lc}></a>
+					<h3>{this.props.title}</h3>
+					<p dangerouslySetInnerHTML={this.state.content} />
+				</section>
+		);
     }
 });

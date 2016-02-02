@@ -5,7 +5,7 @@ import {inject} from 'aurelia-framework';
 export class App {
     constructor(http) {
         this.http = http.configure(config => {
-            config.withBaseUrl('http://localhost:3000');
+            config.withBaseUrl('http://localhost:9000');
         });
     }
 
