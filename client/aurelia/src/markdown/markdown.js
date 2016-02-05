@@ -4,12 +4,9 @@ import MDParser from 'markdown/markdown-parser';
 import marked from 'marked';
 
 @bindable('md')
-@inject(Element)
 export class Markdown {
     
-    constructor (element) {
-        this.el = element;
-        this.MDParser = new MDParser();
+    constructor () {
     }
     
     bind() {
