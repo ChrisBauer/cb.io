@@ -22,7 +22,7 @@ module.exports = function HTTP () {
 				if (request.readyState === 4) {
 					if (request.status - 400 < 0) {
 						// success
-						console.log(request.responseText);
+						// console.log(request.responseText);
 						resolve({
 							status: request.status,
 							data: request.responseText

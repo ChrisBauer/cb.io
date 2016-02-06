@@ -17,13 +17,11 @@ import 'rxjs/Rx';
 			<div>
 				<section class="about">
 					<h3>About</h3>
-					<p>
-						Lorem ipsum...
-					</p>
+					<markdown [mdSrc]="aboutMD"></markdown>
 				</section>
 				<section class="resume">
 					<h3>Resume</h3>
-					<markdown [mdSrc]="md"></markdown>
+					<markdown [mdSrc]="resumeMD"></markdown>
 					<!-- <p>{{md}}</p> -->
 				</section>
 				<section class="freelance">
@@ -36,20 +34,24 @@ import 'rxjs/Rx';
     `
 })
 export class AppComponent implements OnInit {
-    public md: Observable<string>;
+    public aboutMD: string = '';
+    public resumeMD : string = '';
 
 	constructor(private http: Http) {
 	
 	}
 
 	ngOnInit () {
-		this.md = '### Test';
-		
-		var b = this.http.get(CONSTANTS.RETHINK_BASE_URL + 'resume')
+		this.http.get(CONSTANTS.RETHINK_BASE_URL + 'about')
 			.map(res => res.json())
-			.subscribe(md => {
-				console.log(md);
-				this.md = md.content;
+			.subscribe(res => {
+				this.aboutMD = res.content;
+			});
+            
+        this.http.get(CONSTANTS.RETHINK_BASE_URL + 'resume')
+			.map(res => res.json())
+			.subscribe(res => {
+				this.resumeMD = res.content;
 			});
 		
 	}

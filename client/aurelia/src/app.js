@@ -10,10 +10,16 @@ export class App {
     }
 
     activate() {
+        this.http.fetch('/rethink/about')
+            .then(response => response.json())
+            .then(about => {
+                this.aboutMD = about.content;
+            });
+            
         this.http.fetch('/rethink/resume')
             .then(response => response.json())
             .then(resume => {
-                this.resume = resume.content;
+                this.resumeMD = resume.content;
             });
     }
 }
