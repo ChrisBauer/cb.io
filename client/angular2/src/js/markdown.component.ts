@@ -1,19 +1,22 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, Pipe, PipeTransform} from 'angular2/core';
 import * as marked from  'marked/marked.min';
+
+@Pipe({
+    name: 'markdown'
+})
+class MarkdownPipe implements PipeTransform {
+    transform (value) {
+        return marked.parse(value);
+    }
+}
 
 @Component({
 	selector: 'markdown',
 	inputs: ['mdSrc'],
-	template: '<p [innerHTML]="parse(mdSrc)"><p>'
+    pipes: [MarkdownPipe],
+	template: '<p [innerHTML]="mdSrc | markdown"><p>'
 	//template: '<p>{{mdSrc}}</p>'
 })
-export class MarkdownComponent implements OnInit {
+export class MarkdownComponent {
 	public mdSrc: string;
-	public parsedMD: string;
-
-	// parsedMD = marked(mdSrc);
-	//ngOnInit () {
-	parse (mdSrc : string) {
-		return marked.parse(mdSrc);
-	}
 }
