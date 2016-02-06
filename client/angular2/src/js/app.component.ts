@@ -1,11 +1,12 @@
 import {Component, OnInit} from 'angular2/core';
 //import {Http} from 'angular2/http';
 import {CONSTANTS} from './Constants';
-// import {Markdown} from './markdown'
+import {MarkdownComponent} from './markdown.component'
 
 @Component({
 	selector: 'angular-app',
-	// providers: [Http],
+	//providers: [Http],
+	directives: [MarkdownComponent],
 	template: `
         <div>
             <header>
@@ -20,8 +21,8 @@ import {CONSTANTS} from './Constants';
 			</section>
 			<section>
 				<h3>Resume</h3>
-				<!-- <markdown [mdSrc]="md"></markdown> -->
-				<p>{{md}}</p>
+				<markdown [mdSrc]="md"></markdown>
+				<!-- <p>{{md}}</p> -->
 			</section>
 			<section>
 				<h3>Freelance</h3>
@@ -32,7 +33,7 @@ import {CONSTANTS} from './Constants';
     `
 })
 export class AppComponent implements OnInit {
-    public md: string;
+    public md: string = '';
 
 //	constructor(http: Http) {
 //
