@@ -1,11 +1,12 @@
 import {Component, OnInit} from 'angular2/core';
-//import {Http} from 'angular2/http';
+import {HTTP_PROVIDERS, Http, Response} from 'angular2/http';
 import {CONSTANTS} from './Constants';
 import {MarkdownComponent} from './markdown.component'
+import 'rxjs/Rx';
 
 @Component({
 	selector: 'angular-app',
-	//providers: [Http],
+	providers: [HTTP_PROVIDERS],
 	directives: [MarkdownComponent],
 	template: `
         <div>
@@ -13,38 +14,43 @@ import {MarkdownComponent} from './markdown.component'
 				<div class="title">Chris Bauer</div>
 				<div class="swap-page">Swap Page</div>
 			</header>
-			<section>
-				<h3>About</h3>
-				<p>
-					Lorem ipsum...
-				</p>
+			<div>
+				<section class="about">
+					<h3>About</h3>
+					<p>
+						Lorem ipsum...
+					</p>
+				</section>
+				<section class="resume">
+					<h3>Resume</h3>
+					<markdown [mdSrc]="md"></markdown>
+					<!-- <p>{{md}}</p> -->
+				</section>
+				<section class="freelance">
+					<h3>Freelance</h3>
+					<p>
+						At vero eos et ...
+					</p>
 			</section>
-			<section>
-				<h3>Resume</h3>
-				<markdown [mdSrc]="md"></markdown>
-				<!-- <p>{{md}}</p> -->
-			</section>
-			<section>
-				<h3>Freelance</h3>
-				<p>
-					At vero eos et ...
-				</p>
-			</section>
+		</div>
     `
 })
 export class AppComponent implements OnInit {
-    public md: string = '';
+    public md: Observable<string>;
 
-//	constructor(http: Http) {
-//
-//	}
+	constructor(private http: Http) {
+	
+	}
 
 	ngOnInit () {
 		this.md = '### Test';
-		/*
-		this.http.get(CONSTANTS.RETHINK_BASE_URL)
+		
+		var b = this.http.get(CONSTANTS.RETHINK_BASE_URL + 'resume')
 			.map(res => res.json())
-			.subscribe(md => this.md = md);
-		*/
+			.subscribe(md => {
+				console.log(md);
+				this.md = md.content;
+			});
+		
 	}
 }

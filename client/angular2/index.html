@@ -3,7 +3,8 @@
   <head>
         <title>chrisbauer.io | Angular 2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-
+	<link href="../dist/css/reset.css" type="text/css" rel="stylesheet" />
+	<link href="../dist/css/main.css" type="text/css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.33.3/es6-shim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.16/system-polyfills.js"></script>
     
@@ -11,15 +12,25 @@
     <script src="https://code.angularjs.org/tools/system.js"></script>
     <script src="https://code.angularjs.org/tools/typescript.js"></script>
     <script src="https://code.angularjs.org/2.0.0-beta.3/Rx.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.3/angular2.dev.js"></script>
-	<script src="node_modules/marked/marked.min.js"></script>
     <script>
       System.config({
         transpiler: 'typescript', 
         typescriptOptions: { emitDecoratorMetadata: true }, 
-        packages: {'src/js': {defaultExtension: 'ts'}} 
+		packages: {
+			'src/js': {defaultExtension: 'ts'},
+			'node_modules': {
+				format: 'cjs',
+				defaultExtension: 'js'
+			}
+		},
+		paths: {
+			'angular2/*': 'node_modules/angular2/*',
+			'angular2/platform/*': 'node_modules/angular2/platform/*',
+			'marked/*': 'node_modules/marked/*',
+			'rxjs/*': 'node_modules/rxjs/*'
+		}
       });
-      System.import('src/js/main')
+      System.import('src/js/main.ts')
             .then(null, console.error.bind(console));
     </script>
 
