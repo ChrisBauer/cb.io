@@ -1,13 +1,49 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
+//import {Http} from 'angular2/http';
+import {CONSTANTS} from './Constants';
+// import {Markdown} from './markdown'
 
 @Component({
 	selector: 'angular-app',
-	template: '<h1>My First Angular 2 App</h1>'
+	// providers: [Http],
+	template: `
+        <div>
+            <header>
+				<div class="title">Chris Bauer</div>
+				<div class="swap-page">Swap Page</div>
+			</header>
+			<section>
+				<h3>About</h3>
+				<p>
+					Lorem ipsum...
+				</p>
+			</section>
+			<section>
+				<h3>Resume</h3>
+				<!-- <markdown [mdSrc]="md"></markdown> -->
+				<p>{{md}}</p>
+			</section>
+			<section>
+				<h3>Freelance</h3>
+				<p>
+					At vero eos et ...
+				</p>
+			</section>
+    `
 })
-export class AppComponent { }
+export class AppComponent implements OnInit {
+    public md: string;
 
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
+//	constructor(http: Http) {
+//
+//	}
+
+	ngOnInit () {
+		this.md = '### Test';
+		/*
+		this.http.get(CONSTANTS.RETHINK_BASE_URL)
+			.map(res => res.json())
+			.subscribe(md => this.md = md);
+		*/
+	}
+}
