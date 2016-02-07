@@ -7,7 +7,8 @@
     "build-react-min": "browserify react/src/js/main.js -t [ babelify --presets [ react ] ] -d -p [minifyify --map react/target/js/main.js.map --output react/target/js/main.js.map] > react/target/js/main.js",
     "build-react": "browserify -t [ babelify --presets [ react ] ] react/src/js/main.js -o react/target/js/main.js",
 	"build-aurelia": "gulp --cwd aurelia build",
-	"build": "npm run build-aurelia && npm run build-react && npm start &"
+	"build-angular": "cd angular2 && tsc -w",
+	"build": "npm run build-aurelia && npm run build-react && npm run build-angular && npm start &"
   },
   "dependencies": {
     "babel-preset-react": "^6.3.13",
