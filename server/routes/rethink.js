@@ -9,12 +9,14 @@ var connectionInfo = {
 };
 var conn,
 	resumeTable,
-	aboutTable;
+	aboutTable,
+	frontEndsTable;
 
 r.connect(connectionInfo).then(function (c) {
     conn = c;
     resumeTable = r.db('cbio').table('resume');
 	aboutTable = r.db('cbio').table('about');
+	frontEndsTable = r.db('cbio').table('frontEnds');
     console.log('connected');
 });
 
@@ -44,6 +46,20 @@ router.get('/about', function (req, res, next) {
 		.catch(function (e) {
 			res.status(500).json(e).end();
 		});
+});
+
+router.get('/frontEnds', function (req, res, next) {
+	console.log('received request at /frontEnds');
+	frontEndsTable.orderBy({index: r.desc('tstamp')}).limit(1).run(conn)
+		.then(function (cursor) {
+			cursor.toArray(function (e, frontEnds) {
+				res.json(frontEnds[0]);
+			});
+		})
+		.catch(function (e) {
+			res.status(500).json(e).end();
+		});
+
 });
 
 module.exports = router;

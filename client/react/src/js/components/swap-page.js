@@ -1,6 +1,7 @@
 var React = require('React');
 
 module.exports = React.createClass({
+    displayName: 'SwapPage',
 	render: function () {
 		console.log(this.props.options);
 		var options = Object.keys(this.props.options).map(key => {

@@ -5,6 +5,7 @@ var HTTP = require('../utils/http');
 var http = new HTTP();
 
 module.exports = React.createClass({
+    displayName: 'Section',
 	getInitialState: function () {
 		http.get(this.props.contentUrl)
 			.then(http.parseJSON)
