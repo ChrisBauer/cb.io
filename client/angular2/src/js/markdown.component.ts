@@ -1,5 +1,5 @@
 import {Component, Pipe, PipeTransform} from 'angular2/core';
-import * as marked from  'marked/marked.min';
+import * as marked from 'marked';
 
 @Pipe({
     name: 'markdown'

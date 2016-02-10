@@ -1,10 +1,29 @@
 @dark: #223344;
+@header: lighten(@dark, 10%);
 @light: lighten(@dark, 50%);
 
 .default-font {
     font-family: Helvetica, Arial, sans-serif;
     line-height: 140%;
     font-weight: 300;
+}
+
+.roll-over-lighten (@color) {
+    color: @color;
+    transition: color 0.2s ease-in;
+    
+    &:hover {
+        color: lighten(@color, 20%);
+    }
+}
+
+.roll-over-darken (@color) {
+    color: @color;
+    transition: color 0.2s ease-in;
+    
+    &:hover {
+        color: darken(@color, 20%);
+    }
 }
 
 body {
@@ -60,17 +79,23 @@ li {
 header {
     height: 300px;
     padding: 100px 10%;
-    background-color: rgba(255,255,255,0.1);
+    background-color: @header;
     margin: auto;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     
+    a {
+        .default-font;
+        .roll-over-darken(white);
+    }
+    
     div {
         .default-font;
         color: white;
-        line-height: 60px;
-        padding: 20px;
+        line-height: 100px;
+        width: 8em;
+        text-align: center;
         border: 1px solid white;
         border-radius: 3px;
     }
@@ -83,7 +108,7 @@ section {
 	background-color: @dark;
 	color: @light;
     a, a:link, a:visited {
-	   color: @light;
+	   .roll-over-darken(@light);
     }
 
 	&:nth-child(even) {
@@ -91,7 +116,7 @@ section {
 		color: @dark;
         
         a, a:link, a:visited {
-        color: @dark;
+            .roll-over-lighten(@dark);
         }
 	}
 	
@@ -108,6 +133,51 @@ section {
 	}
 }
 
-
-
+.swap-page {
+    transition: padding 0.2s ease-in;
+    
+    padding-top: 20px; 
+    
+    
+    &:hover {
+        padding-top: 0;
+        .option {
+            opacity: 1;
+            padding: 1em;
+            height: 3.4em;
+            border-width: 0 1px 1px 1px;
+            border-bottom-color: darken(white, 20%);
+        }
+    }
+    
+    .option {
+        transition: height 0.2s ease-in, padding 0.2s ease-in, opacity 0.2s ease-in;
+        height: 0;
+        opacity: 0;
+        background-color: @header;
+        overflow: hidden;
+        text-align: center;
+        padding: 0;
+        border-radius: 0;
+        border-width: 0 1px;
+        margin-left: -1px;
+        
+        line-height: initial;
+        a {
+            text-decoration: none;
+            .roll-over-darken(white);
+        }
+        
+        &:first-child {
+            opacity: 1;
+            padding: 1em;
+            height: 3.4em;
+        }
+        
+        &:last-child {
+            border-radius: 0 0 4px 4px;
+            border-bottom-color: white;
+        }
+    }
+}
 

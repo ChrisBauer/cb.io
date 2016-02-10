@@ -6,7 +6,7 @@ module.exports = React.createClass({
 		return (
 			<header>
 				<div className="title">Chris Bauer</div>
-				<SwapPage />
+				<SwapPage options={this.props.options} />
 			</header>
 		);
 	}
