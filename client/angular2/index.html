@@ -12,24 +12,8 @@
     <script src="https://code.angularjs.org/tools/system.js"></script>
     <script src="https://code.angularjs.org/tools/typescript.js"></script>
     <script src="https://code.angularjs.org/2.0.0-beta.3/Rx.js"></script>
+    <script src="system.config.js"></script>
     <script>
-      System.config({
-        transpiler: 'typescript', 
-        typescriptOptions: { emitDecoratorMetadata: true }, 
-		packages: {
-			'src/js': {defaultExtension: 'ts'},
-			'node_modules': {
-				format: 'cjs',
-				defaultExtension: 'js'
-			}
-		},
-		paths: {
-			'angular2/*': 'node_modules/angular2/*',
-			'angular2/platform/*': 'node_modules/angular2/platform/*',
-			'marked': 'node_modules/marked/marked.min',
-			'rxjs/*': 'node_modules/rxjs/*'
-		}
-      });
       System.import('src/js/main.ts')
             .then(null, console.error.bind(console));
     </script>
