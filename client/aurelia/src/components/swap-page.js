@@ -1,7 +1,7 @@
 import {HttpClient} from 'aurelia-fetch-client';
 import {inject} from 'aurelia-framework';
 import CONSTANTS from '../Constants';
-import {Utils} from '../../../shared/src/js/utils';
+import Utils from '../../../shared/src/js/utils';
 
 @inject(HttpClient)
 export class SwapPage {
@@ -15,7 +15,7 @@ export class SwapPage {
 	bind() {
 		this.http.fetch('/rethink/frontEnds')
 			.then(response => response.json())
-			.then(response => Utils.parseFrontEnds(response.frontEnds, CONSTANTS.APP_NAME))
+			.then(response => Utils.processFrontEnds(response.frontEnds, CONSTANTS.APP_NAME))
 			.then(frontEnds => {
                 console.log(frontEnds);
                 this.frontEnds = frontEnds;

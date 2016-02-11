@@ -1,5 +1,5 @@
-export class Utils {
-	static parseFrontEnds (frontEnds, appName) {
+export default class Utils {
+	static processFrontEnds (frontEnds, appName) {
 		return Object.keys(frontEnds)
 			.map(key => { return {key: key, title: frontEnds[key].title, location: frontEnds[key].location}; })
 			.sort( (a, b) => {
