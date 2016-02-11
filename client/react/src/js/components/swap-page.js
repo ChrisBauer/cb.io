@@ -8,7 +8,7 @@ module.exports = React.createClass({
 			var option = this.props.options[key];
 			return (
 				<div key={key} className="option">
-					<a href={option.location} title={option.title}>{option.title}</a>
+					<a href={option.location} title={option.title}>{option.title} </a>
 				</div>
 			);
 		});

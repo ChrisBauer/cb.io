@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start-server": "node ./express/bin/www",
-    "build-react": "browserify -t [ babelify --presets [ react ] ] react/src/js/main.js -o react/target/js/main.js",
-    "build-react-min": "browserify react/src/js/main.js -t [ babelify --presets [ react ] ] -d -p [minifyify --map react/target/js/main.js.map --output react/target/js/main.js.map] > react/target/js/main.js",
+    "build-react": "npm run build-shared-js && browserify -t [ babelify --presets [ react ] ] react/src/js/main.js -o react/target/js/main.js",
+    "build-react-min": "npm run build-shared-js && browserify react/src/js/main.js -t [ babelify --presets [ react ] ] -d -p [minifyify --map react/target/js/main.js.map --output react/target/js/main.js.map] > react/target/js/main.js",
     "build-aurelia": "gulp --cwd aurelia build",
     "build-angular": "cd angular2 && npm run build",
     "build-less": "cd shared && gulp build",
