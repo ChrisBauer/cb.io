@@ -1,26 +1,11 @@
 {
-  "name": "aurelia-skeleton-navigation",
-  "version": "1.0.0-beta.1.0.5",
-  "description": "A starter kit for building a standard navigation-style app with Aurelia.",
-  "keywords": [
-    "aurelia",
-    "navigation",
-    "skeleton"
-  ],
-  "homepage": "http://aurelia.io",
-  "bugs": {
-    "url": "https://github.com/aurelia/skeleton-navigation/issues"
-  },
-  "license": "CC0-1.0",
-  "author": "Rob Eisenberg <rob@bluespire.com> (http://robeisenberg.com/)",
+  "name": "cbio-aurelia",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Aurelia Front-End for chrisbauer.io",
+  "license": "ISC",
   "main": "dist/main.js",
-  "repository": {
-    "type": "git",
-    "url": "http://github.com/aurelia/skeleton-navigation"
-  },
   "scripts": {
-    "test": "gulp test",
-    "e2e": "gulp serve webdriver-standalone e2e"
   },
   "devDependencies": {
     "aurelia-bundler": "^0.2.1",

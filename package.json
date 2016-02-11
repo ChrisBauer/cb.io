@@ -1,9 +1,10 @@
 {
   "name": "cbio",
-  "version": "1.0.0",
-  "description": "cbio root",
+  "version": "0.0.1",
+  "private": true,
+  "description": "cbio root - contains start and stop scripts",
   "scripts": {
-    "build-all": "cd client && npm run build & cd server && rethinkdb & cd server && npm start &",
+    "build-all": "cd client && npm start & cd server && rethinkdb & cd server && npm start &",
     "kill-all": "pkill -u `whoami` node && pkill -u `whoami` -o rethinkdb"
   },
   "author": "Chris Bauer",

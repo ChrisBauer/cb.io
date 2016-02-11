@@ -1,12 +1,18 @@
 {
   "name": "cbio-angular2",
-  "version": "1.0.0",
+  "version": "0.0.1	",
+  "private": true,
   "author": "Chris Bauer",
+  "description": "Angular 2 Front-End for chrisbauer.io",
   "scripts": {
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
+    "tsc": "tsc --outDir dist/js --rootDir src/js",
+    "tsc:w": "tsc --outDir dist/js --rootDir src/js -w",
     "lite": "lite-server",
-    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" "
+    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
+    "copyShared": "mkdir -p src/js/shared && cp ../shared/src/js/*.js src/js/shared/",
+    "renameShared": "rename \"s/\\.js/\\.ts/\" src/js/shared/*.js",
+    "deleteShared": "rm -r src/js/shared",
+    "build": "npm run copyShared && npm run renameShared && npm run tsc && npm run deleteShared"
   },
   "license": "ISC",
   "dependencies": {

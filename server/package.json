@@ -1,6 +1,8 @@
 {
   "name": "server",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "author": "Chris Bauer",
+  "description": "Server config for chrisbauer.io",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"

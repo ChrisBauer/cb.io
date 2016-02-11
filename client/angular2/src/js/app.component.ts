@@ -1,18 +1,19 @@
 import {Component, OnInit} from 'angular2/core';
 import {HTTP_PROVIDERS, Http, Response} from 'angular2/http';
 import {CONSTANTS} from './Constants';
-import {MarkdownComponent} from './markdown.component'
+import {MarkdownComponent} from './markdown.component';
+import {SwapPageComponent} from './swap-page.component';
 import 'rxjs/Rx';
 
 @Component({
 	selector: 'angular-app',
 	providers: [HTTP_PROVIDERS],
-	directives: [MarkdownComponent],
+	directives: [MarkdownComponent, SwapPageComponent],
 	template: `
         <div>
             <header>
 				<div class="title">Chris Bauer</div>
-				<div class="swap-page">Swap Page</div>
+				<swap-page class="swap-page"></swap-page>
 			</header>
 			<div>
 				<section class="about">
