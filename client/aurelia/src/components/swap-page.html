@@ -1,0 +1,7 @@
+<template>
+    <div class="option" repeat.for="frontEnd of frontEnds">
+        <a href.bind="frontEnd.location" title.bind="frontEnd.title">
+            ${frontEnd.title}
+        </a>
+    </div>
+</template>
