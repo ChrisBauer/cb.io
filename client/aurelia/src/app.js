@@ -22,4 +22,9 @@ export class App {
                 this.resumeMD = resume.content;
             });
     }
+	attached () {
+		// cleanup the "fake" header once the real document has loaded
+		var outsideHeader = document.getElementById('outside-header');
+		outsideHeader.parentNode.removeChild(outsideHeader);
+	}
 }

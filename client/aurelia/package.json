@@ -5,8 +5,7 @@
   "description": "Aurelia Front-End for chrisbauer.io",
   "license": "ISC",
   "main": "dist/main.js",
-  "scripts": {
-  },
+  "scripts": {},
   "devDependencies": {
     "aurelia-bundler": "^0.2.1",
     "aurelia-tools": "^0.1.18",

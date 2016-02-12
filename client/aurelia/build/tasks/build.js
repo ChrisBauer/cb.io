@@ -53,6 +53,7 @@ gulp.task('build-less', function () {
 gulp.task('build', function (callback) {
     return runSequence(
         'clean',
+		'unbundle',
         ['build-system', 'build-html', 'build-css', 'build-less'],
         callback
         );

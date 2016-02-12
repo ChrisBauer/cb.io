@@ -10,7 +10,7 @@ const OPS = [
 module.exports = function HTTP () {
 
 	this.http = function executeHttpCall (url, method, data, headers) {
-		return new Promise (function (resolve, reject) {
+		return new Promise ( (resolve, reject) => {
 
 			var request = new XMLHttpRequest(),
 				type = this.method && OPS.indexOf(this.method.toUpperCase()) < -1 ? this.method.toUpperCase() : OPS[0];

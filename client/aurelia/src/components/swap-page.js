@@ -17,7 +17,6 @@ export class SwapPage {
 			.then(response => response.json())
 			.then(response => Utils.processFrontEnds(response.frontEnds, CONSTANTS.APP_NAME))
 			.then(frontEnds => {
-                console.log(frontEnds);
                 this.frontEnds = frontEnds;
             });
 	}
