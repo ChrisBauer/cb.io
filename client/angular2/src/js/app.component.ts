@@ -17,20 +17,23 @@ import 'rxjs/Rx';
 			</header>
 			<div>
 				<section class="about">
+					<a id="about"></a>
 					<h3>About</h3>
 					<markdown [mdSrc]="aboutMD"></markdown>
 				</section>
 				<section class="resume">
+					<a id="resume"></a>
 					<h3>Resume</h3>
 					<markdown [mdSrc]="resumeMD"></markdown>
 					<!-- <p>{{md}}</p> -->
 				</section>
-				<section class="freelance">
+				<!-- <section class="freelance">
+					<a id="freelance"></a>
 					<h3>Freelance</h3>
 					<p>
-						At vero eos et ...
+						Coming Soon.
 					</p>
-			</section>
+			</section> -->
 		</div>
     `
 })
