@@ -1,3 +1,4 @@
 node_modules
 rethinkdb
 rethinkdb_data
+*.log

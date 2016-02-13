@@ -16,7 +16,8 @@
     "build": "npm run build-less && npm run build-shared-js && npm run build-aurelia && npm run build-react && npm run build-angular",
     "build-prod": "npm run build-less && npm run build-shared-js && npm run build-aurelia-prod && npm run build-react-prod && npm run build-angular-prod",
     "start": "npm run build && npm run start-server",
-    "start-prod": "npm run build-prod && npm run start-server"
+    "start-prod": "npm run build-prod && npm run start-server",
+    "start-prod-forever": "npm run build-prod && forever start -c \"npm run start-server\" ./"
   },
   "dependencies": {
     "babel-preset-es2015": "^6.5.0",
