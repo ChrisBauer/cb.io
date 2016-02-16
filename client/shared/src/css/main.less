@@ -100,7 +100,54 @@ header {
         border: 1px solid white;
         border-radius: 3px;
     }
+    
+    &.sticky {
+        // display: none;
+        background: transparent;
+        height: 60px;
+        padding: 5px 10%;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        div, swap-page {
+            opacity: 0;
+            transition: opacity 0s ease-in;
+            line-height: 50px;
+            height: 50px;
+        }
+        .swap-page {
+            padding-top: 0;
+            overflow: hidden;
+            
+            &:hover {
+                overflow: visible;
+                .option {
+                    height: 100%;
+                    padding: 0;
+                    line-height: inherit;
+                }
+            }
+            
+            .option:first-child {
+                padding: 0;
+                height: 100%;
+                line-height: inherit;
+            }
+        }
+    }
+    
+    &.sticky.visible {
+        background-color: @header;
+        
+        div, swap-page {
+            opacity: 1;
+            transition: opacity 0.2s ease-in;
+        }
+    }
+        
 }
+
+
 
 section {
     margin: 0;

@@ -1,5 +1,6 @@
 var React = require('react');
-var SwapPage = require('./swap-page');
+var StaticHeader = require('./static-header');
+var StickyHeader = require('./sticky-header');
 var CONSTANTS = require('../Constants.js');
 var Utils = require('../../../../dist/js/utils').default;
 var HTTP = require('../utils/http');
@@ -24,10 +25,10 @@ module.exports = React.createClass({
     },
 	render: function () {
 		return (
-			<header>
-				<div className="title">Chris Bauer</div>
-				<SwapPage options={this.state.frontEnds} />
-			</header>
+			<div className="header-wrapper">
+				<StaticHeader frontEnds={this.state.frontEnds} />
+				<StickyHeader frontEnds={this.state.frontEnds} />
+			</div>
 		);
 	}
 });
