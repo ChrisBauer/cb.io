@@ -1,4 +1,4 @@
-import {bindable, inject} from 'aurelia-framework';
+import {bindable} from 'aurelia-framework';
 import $ from 'jquery';
 import marked from 'marked';
 

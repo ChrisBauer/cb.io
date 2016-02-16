@@ -1,0 +1,7 @@
+<template>
+    <require from="./swap-page"></require>
+    <header class="sticky" class.bind="isVisible ? 'visible' : ''">
+        <div class="title">Chris Bauer</div>
+        <swap-page class="swap-page" front-ends.bind="frontEnds || []"></swap-page>
+    </header>
+</template>

@@ -1,0 +1,9 @@
+<template>
+    <require from="./swap-page"></require>
+    <require from="./sticky-header"></require>
+    <header>
+        <div class="title">Chris Bauer</div>
+		<swap-page class="swap-page" front-ends.bind="frontEnds || []"></swap-page>
+    </header>
+    <sticky-header front-ends.bind="frontEnds || []"></sticky-header>
+</template>
