@@ -1,20 +1,26 @@
 import {Component, OnInit} from 'angular2/core';
 import {HTTP_PROVIDERS, Http, Response} from 'angular2/http';
 import {CONSTANTS} from './Constants';
+import {FrontEnd} from './frontEnd.interface';
+
 import {MarkdownComponent} from './markdown.component';
 import {SwapPageComponent} from './swap-page.component';
+import {StickyHeaderComponent} from './sticky-header.component';
+
+import Utils from './shared/utils';
 import 'rxjs/Rx';
 
 @Component({
 	selector: 'angular-app',
 	providers: [HTTP_PROVIDERS],
-	directives: [MarkdownComponent, SwapPageComponent],
+	directives: [MarkdownComponent, SwapPageComponent, StickyHeaderComponent],
 	template: `
         <div>
             <header>
 				<div class="title">Chris Bauer</div>
-				<swap-page class="swap-page"></swap-page>
+				<swap-page [frontEnds]="frontEnds" class="swap-page"></swap-page>
 			</header>
+            <sticky-header [frontEnds]="frontEnds"></sticky-header>
 			<div>
 				<section class="about">
 					<a id="about"></a>
@@ -40,6 +46,7 @@ import 'rxjs/Rx';
 export class AppComponent implements OnInit {
     public aboutMD: string = '';
     public resumeMD : string = '';
+    public frontEnds: FrontEnd[] = [];
 
 	constructor(private http: Http) {
 	
@@ -58,5 +65,10 @@ export class AppComponent implements OnInit {
 				this.resumeMD = res.content;
 			});
 		
+		this.http.get(CONSTANTS.RETHINK_BASE_URL + 'frontEnds')
+			.map(res => res.json())
+			.subscribe(res => {
+				this.frontEnds = Utils.processFrontEnds(res.frontEnds, CONSTANTS.APP_NAME);
+			});
 	}
 }
