@@ -1,7 +1,7 @@
 import {HttpClient} from 'aurelia-fetch-client';
 import {inject} from 'aurelia-framework';
 import CONSTANTS from '../Constants';
-import Utils from '../../../shared/src/js/utils';
+import Utils from 'shared/utils';
 
 @inject(HttpClient)
 export class HeaderWrapper {

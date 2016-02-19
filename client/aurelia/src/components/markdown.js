@@ -1,5 +1,4 @@
 import {bindable} from 'aurelia-framework';
-import $ from 'jquery';
 import marked from 'marked';
 
 @bindable('md')
