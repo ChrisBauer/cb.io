@@ -5,8 +5,8 @@
   "description": "cbio root - contains start and stop scripts",
   "scripts": {
     "build-all": "cd client && npm start & cd server && rethinkdb & cd server && npm start &",
-	"build-all-prod": "cd server && rethinkdb & cd client && npm run start-prod & cd server && npm start &",
-    "kill-all": "pkill -u `whoami` node && pkill -u `whoami` -o rethinkdb"
+	"build-all-prod": "cd server && rethinkdb & cd client && npm run start-prod-forever & cd server && npm run start-forever",
+    "kill-all": "forever stop client && forever stop server && pkill -u `whoami` -o rethinkdb"
   },
   "author": "Chris Bauer",
   "license": "ISC"
