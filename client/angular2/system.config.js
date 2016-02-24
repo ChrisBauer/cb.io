@@ -1,6 +1,7 @@
 System.config({
     transpiler: 'typescript', 
     typescriptOptions: { emitDecoratorMetadata: true }, 
+    meta: { 'dist/js/main.min.js': { format: 'global' } },
     packages: {
         'dist/js': {defaultExtension: 'js'},
         'node_modules': {
@@ -15,4 +16,4 @@ System.config({
         'rxjs/*': 'node_modules/rxjs/*',
 		'shared/*': '../../shared/src/js/*'
     }
-    });
+});
