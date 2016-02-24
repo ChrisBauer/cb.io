@@ -46,6 +46,11 @@ gulp.task('build-less', function () {
         .pipe(gulp.dest(paths.output));
 });
 
+gulp.task('copy-shared', function () {
+	return gulp.src(paths.sharedJS)
+		.pipe(gulp.dest(paths.sharedOutput));
+});
+
 // this task calls the clean task (located
 // in ./clean.js), then runs the build-system
 // and build-html tasks in parallel
@@ -54,6 +59,7 @@ gulp.task('build', function (callback) {
     return runSequence(
         'clean',
 		'unbundle',
+		'copy-shared',
         ['build-system', 'build-html', 'build-css', 'build-less'],
         callback
         );

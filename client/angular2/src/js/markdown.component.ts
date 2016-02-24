@@ -1,3 +1,5 @@
+/// <reference path="../../typings/marked/marked.d.ts" />
+
 import {Component, Pipe, PipeTransform} from 'angular2/core';
 import * as marked from 'marked';
 

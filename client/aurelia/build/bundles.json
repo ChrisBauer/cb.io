@@ -3,8 +3,9 @@
     "dist/app-build": {
       "includes": [
         "[*]",
+        "[components/*]",
         "*.html!text",
-        "*.css!text"
+        "components/*.html!text"
       ],
       "options": {
         "inject": true,
@@ -24,8 +25,7 @@
         "aurelia-loader-default",
         "aurelia-history-browser",
         "aurelia-logging-console",
-        "bootstrap",
-        "bootstrap/css/bootstrap.css!text"
+        "shared/utils"
       ],
       "options": {
         "inject": true,
