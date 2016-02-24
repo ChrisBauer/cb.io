@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start-forever": "forever start -c \"npm start\" ./"
+    "start-forever": "forever start -a --uid \"server\" -c \"npm start\" ./"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
