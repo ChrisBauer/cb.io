@@ -1,16 +1,17 @@
 <template>
     <require from="components/markdown"></require>
     <require from="components/header-wrapper"></require>
+	<require from="components/anchor"></require>
     <header-wrapper></header-wrapper>
 
     <div>
         <section class="about">
-			<a id="about"></a>
+			<anchor anchor-id="about" anchor-title="About"></anchor>
             <h3>About</h3>
             <markdown src-url="${aboutUrl}"></markdown>
         </section>
         <section class="resume">
-			<a id="resume"></a>
+		<anchor anchor-id="resume" anchor-title="Resume"></anchor>
             <h3>Resume</h3>
             <markdown src-url="${resumeUrl}"></markdown>
         </section>

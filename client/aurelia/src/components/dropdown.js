@@ -1,7 +1,7 @@
 import {bindable} from 'aurelia-framework';
 
-@bindable('frontEnds')
-export class SwapPage {
+@bindable('options')
+export class Dropdown {
 	constructor () {
         
     }

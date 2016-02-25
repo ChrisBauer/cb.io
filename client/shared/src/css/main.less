@@ -85,6 +85,11 @@ li {
 	}
 }
 
+a.anchor {
+    position: relative;
+    top: -60px;
+}
+
 header {
     height: 300px;
     padding: 100px 10%;
@@ -99,7 +104,7 @@ header {
         .roll-over-darken(white);
     }
     
-    div, swap-page {
+    div, .swap-page {
         box-sizing: border-box;
         .default-font;
         color: white;
@@ -118,7 +123,7 @@ header {
         position: fixed;
         top: 0;
         width: 100%;
-        div, swap-page {
+        div, .swap-page {
             opacity: 0;
             transition: opacity 0s ease-in;
             line-height: 50px;
@@ -148,7 +153,7 @@ header {
     &.sticky.visible {
         background-color: @header;
         
-        div, swap-page {
+        div, .swap-page {
             opacity: 1;
             transition: opacity 0.2s ease-in;
         }

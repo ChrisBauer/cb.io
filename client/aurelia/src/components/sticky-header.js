@@ -1,17 +1,21 @@
-import {bindable} from 'aurelia-framework';
+import {bindable, inject} from 'aurelia-framework';
+import {EventRegistrar} from '../utils/event-registrar';
 
 const HEADER_HEIGHT = 240;
 
 @bindable('frontEnds')
+@bindable('anchors')
+@inject(EventRegistrar)
 export class StickyHeader {
-    constructor () {
+    constructor (EventRegistrar) {
+		this.EventRegistrar = EventRegistrar;
         this.isVisible = false;
     }
     
     attached () {
-        window.onscroll = () => {
+		this.EventRegistrar.register(window, 'onscroll', () => {
 			this.isVisible = this.checkVisible();
-		};
+		});
     }
     
     checkVisible () {

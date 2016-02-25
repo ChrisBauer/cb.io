@@ -1,9 +1,11 @@
 <template>
     <require from="./swap-page"></require>
+    <require from="./dropdown"></require>
     <require from="./sticky-header"></require>
     <header>
         <div class="title">Chris Bauer</div>
+		<dropdown class="swap-page" options.bind="anchors || []"></dropdown>
 		<swap-page class="swap-page" front-ends.bind="frontEnds || []"></swap-page>
     </header>
-    <sticky-header front-ends.bind="frontEnds || []"></sticky-header>
+	<sticky-header anchors.bind="anchors || []"front-ends.bind="frontEnds || []"></sticky-header>
 </template>

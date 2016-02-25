@@ -1,7 +1,9 @@
 <template>
     <require from="./swap-page"></require>
+	<require from="./dropdown"></require>
     <header class="sticky" class.bind="isVisible ? 'visible' : ''">
         <div class="title">Chris Bauer</div>
+		<dropdown class="swap-page" options.bind="anchors || []"></dropdown>
         <swap-page class="swap-page" front-ends.bind="frontEnds || []"></swap-page>
     </header>
 </template>
