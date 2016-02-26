@@ -1,3 +1,8 @@
+var EventRegistrar = require('../../../dist/js/event-registrar').default;
+var registrar = new EventRegistrar();
+
+var ScrollKeeper = require('./scroll-keeper')(registrar);
+
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Header = require('./components/header');
@@ -6,7 +11,7 @@ var CONSTANTS = require('./Constants');
 
 ReactDOM.render(
 	<div>
-		<Header />
+		<Header registrar={registrar} />
 	</div>,
 	document.getElementById('header')
 );

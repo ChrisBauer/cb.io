@@ -1,5 +1,6 @@
 var React = require('react');
 var SwapPage = require('./swap-page');
+var ProgressTracker = require('./progress-tracker');
 var classNames = require('classnames');
 
 const HEADER_HEIGHT = 240;
@@ -16,11 +17,11 @@ module.exports = React.createClass({
 		return (document.documentElement.scrollTop || document.body.scrollTop) > HEADER_HEIGHT;
 	},
 	setupScrollHandler: function setupScrollHandler () {
-		window.onscroll = () => {
+        this.props.registrar.register(window, 'onscroll', () => {
 			if (this.isVisible() !== this.state.isVisible) {
 				this.setState({isVisible: !this.state.isVisible});
 			}
-		};
+		});
 	},
 	render: function render () {
 		var classes = classNames({
@@ -30,6 +31,7 @@ module.exports = React.createClass({
 		return (
 			<header className={classes}>
 				<div className="title">Chris Bauer</div>
+                <ProgressTracker />
 				<SwapPage options={this.props.frontEnds} />
 			</header>
 		);

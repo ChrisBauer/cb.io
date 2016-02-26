@@ -1,5 +1,6 @@
 var React = require('react');
 var marked = require('marked');
+var Anchor = require('./anchor');
 var HTTP = require('../utils/http');
 
 var http = new HTTP();
@@ -25,7 +26,7 @@ module.exports = React.createClass({
         return (
 			
 				<section className={lc}>
-					<a id={lc}></a>
+					<Anchor anchorId={lc} anchorTitle={this.props.title} />
 					<h3>{this.props.title}</h3>
 					<p dangerouslySetInnerHTML={this.state.content} />
 				</section>

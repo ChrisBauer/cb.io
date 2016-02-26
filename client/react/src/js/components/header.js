@@ -3,8 +3,8 @@ var StaticHeader = require('./static-header');
 var StickyHeader = require('./sticky-header');
 var CONSTANTS = require('../Constants.js');
 var Utils = require('../../../../dist/js/utils').default;
-var HTTP = require('../utils/http');
 
+var HTTP = require('../utils/http');
 var http = new HTTP();
 
 module.exports = React.createClass({
@@ -27,7 +27,7 @@ module.exports = React.createClass({
 		return (
 			<div className="header-wrapper">
 				<StaticHeader frontEnds={this.state.frontEnds} />
-				<StickyHeader frontEnds={this.state.frontEnds} />
+				<StickyHeader frontEnds={this.state.frontEnds} registrar={this.props.registrar} />
 			</div>
 		);
 	}
