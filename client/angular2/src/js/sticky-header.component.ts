@@ -1,6 +1,7 @@
 import {Component, OnInit, NgZone} from 'angular2/core';
 import {FrontEnd} from './frontEnd.interface';
 import {SwapPageComponent} from './swap-page.component';
+import EventRegistrar from './shared/event-registrar';
 
 const HEADER_HEIGHT : number = 240;
 @Component({
@@ -19,16 +20,17 @@ export class StickyHeaderComponent implements OnInit {
 	public isVisible: boolean = false;
 	public zone: NgZone;
     
-	constructor(zone: NgZone) {
+	constructor(zone: NgZone, private eventRegistrar: EventRegistrar) {
 		this.zone = zone;
+        this.eventRegistrar = eventRegistrar;
 	}
 
 	ngOnInit () {
-        window.onscroll = () => {
+        this.eventRegistrar.register(window, 'onscroll', () => {
 			this.zone.run(() => {
 				this.isVisible = this.checkVisible();
 			});
-		};
+		});
 	}
 
     checkVisible () : boolean {

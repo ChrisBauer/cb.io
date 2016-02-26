@@ -12,7 +12,7 @@ export default class EventRegistrar {
 	setupCallback (element, event) {
 		element[event] = function () {
 			var args = arguments;
-			this[event].forEach( cb => cb.apply(arguments) );
+			this[event].forEach( cb => cb.apply(args) );
 		}.bind(this);
 	}
 }

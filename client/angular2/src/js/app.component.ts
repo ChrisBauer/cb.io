@@ -8,11 +8,12 @@ import {SwapPageComponent} from './swap-page.component';
 import {StickyHeaderComponent} from './sticky-header.component';
 
 import Utils from './shared/utils';
+import EventRegistrar from './shared/event-registrar';
 import 'rxjs/Rx';
 
 @Component({
 	selector: 'angular-app',
-	providers: [HTTP_PROVIDERS],
+	providers: [HTTP_PROVIDERS, EventRegistrar],
 	directives: [MarkdownComponent, SwapPageComponent, StickyHeaderComponent],
 	template: `
         <div>
