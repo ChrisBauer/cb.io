@@ -4,7 +4,6 @@ import {EventRegistrar} from '../utils/event-registrar';
 const HEADER_HEIGHT = 240;
 
 @bindable('frontEnds')
-@bindable('anchors')
 @inject(EventRegistrar)
 export class StickyHeader {
     constructor (EventRegistrar) {

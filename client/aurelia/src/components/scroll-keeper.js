@@ -31,17 +31,17 @@ export class ScrollKeeper {
 		i = --i < 0 ? 0 : i;
 
 		if (this.anchors[i] !== this.currentAnchor) {
+            if (this.currentAnchor) {
+                this.currentAnchor.selected = false;
+            }
+            this.anchors[i].selected = true;
 			this.currentAnchor = this.anchors[i];
 			this.notify(this.currentAnchor);
 		}
 	}
 
-	getOffset (element) {
-		return element.offsetTop;
-	}
-
 	updateOffsets () {
-		this.anchors.forEach( anchor => anchor.position = this.getOffset(anchor.element) );
+		this.anchors.forEach( anchor => anchor.position = anchor.getOffset() );
 	}
 
 	notify (currentAnchor) {
@@ -53,17 +53,14 @@ export class ScrollKeeper {
 		this.callbacks.push(cb);
 	}
 
-	registerAnchor (id, title, href) {
-		let anchor = {
-			id: id,
-			title: title,
-			location: href,
-			element: document.getElementById(id)
-		};
-		anchor.position = this.getOffset(anchor.element);
+	registerAnchor (anchor) {
+		anchor.position = anchor.getOffset();
 
 		this.observer.observe(anchor.element.parentElement.parentElement, {childList: true, subtree: true});
 
 		this.anchors.push(anchor);
+        this.anchors.sort( (a, b) => a.position > b.position ? 1 : a.position === b.position ? 0 : -1 );
+
+        this.anchors.forEach ( (anchor, i) => anchor.selected = i === 0 );
 	}
 }

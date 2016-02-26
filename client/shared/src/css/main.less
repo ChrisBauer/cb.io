@@ -1,6 +1,7 @@
 @dark: #223344;
 @header: lighten(@dark, 10%);
 @light: lighten(@dark, 50%);
+@border: #446694;
 
 .default-font {
     font-family: Helvetica, Arial, sans-serif;
@@ -85,9 +86,13 @@ li {
 	}
 }
 
-a.anchor {
+anchor {
     position: relative;
     top: -60px;
+
+    a {
+        display: block;
+    }
 }
 
 header {
@@ -104,14 +109,14 @@ header {
         .roll-over-darken(white);
     }
     
-    div, .swap-page {
+    div, .swap-page, .progress-tracker {
         box-sizing: border-box;
         .default-font;
         color: white;
         line-height: 100px;
         width: 8em;
         text-align: center;
-        border: 1px solid white;
+        border: 1px solid @border;
         border-radius: 3px;
     }
     
@@ -123,13 +128,13 @@ header {
         position: fixed;
         top: 0;
         width: 100%;
-        div, .swap-page {
+        div, .swap-page, .progress-tracker {
             opacity: 0;
             transition: opacity 0s ease-in;
             line-height: 50px;
             height: 50px;
         }
-        .swap-page {
+        .swap-page, .progress-tracker {
             padding-top: 0;
             overflow: hidden;
             
@@ -141,8 +146,16 @@ header {
                     line-height: inherit;
                 }
             }
-            
+        }
+        .swap-page {
             .option:first-child {
+                padding: 0;
+                height: 100%;
+                line-height: inherit;
+            }
+        }
+        .progress-tracker {
+            .option.selected {
                 padding: 0;
                 height: 100%;
                 line-height: inherit;
@@ -152,8 +165,9 @@ header {
     
     &.sticky.visible {
         background-color: @header;
+        box-shadow: 0 0 5px black;
         
-        div, .swap-page {
+        div, .swap-page, .progress-tracker {
             opacity: 1;
             transition: opacity 0.2s ease-in;
         }
@@ -198,7 +212,7 @@ section {
 	}
 }
 
-.swap-page {
+.swap-page, .progress-tracker {
     transition: padding 0.2s ease-in;
     
     padding-top: 20px; 
@@ -211,7 +225,7 @@ section {
             padding: 1em;
             height: 3.4em;
             border-width: 0 1px 1px 1px;
-            border-bottom-color: darken(white, 20%);
+            border-bottom-color: @border;
         }
     }
     
@@ -233,6 +247,17 @@ section {
             .roll-over-darken(white);
         }
         
+        
+        
+        &:last-child {
+            border-radius: 0 0 4px 4px;
+            border-bottom-color: @border;
+        }
+    }
+}
+
+.swap-page {
+    .option {
         &:first-child {
             opacity: 1;
             padding: 1em;
@@ -246,11 +271,36 @@ section {
                 top: -0.25em;
             }
         }
-        
-        &:last-child {
-            border-radius: 0 0 4px 4px;
-            border-bottom-color: white;
-        }
     }
 }
 
+.progress-tracker {
+    .option {
+        &.selected {
+            opacity: 1;
+            padding: 1em;
+            height: 3.4em;
+
+            &:after {
+                content: "\25BC";
+                font-size: 0.5em;
+                display: inline-block;
+                position: relative;
+                top: -0.25em;
+            }
+        }
+    }
+    
+    &:hover {
+        .option.selected:after{
+            content: "";
+        }
+        .option:first-child:after {
+                content: "\25BC";
+                font-size: 0.5em;
+                display: inline-block;
+                position: relative;
+                top: -0.25em;
+            }
+    }
+}

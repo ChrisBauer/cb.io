@@ -1,9 +1,9 @@
 <template>
     <require from="./swap-page"></require>
-	<require from="./dropdown"></require>
+	<require from="./progress-tracker"></require>
     <header class="sticky" class.bind="isVisible ? 'visible' : ''">
         <div class="title">Chris Bauer</div>
-		<dropdown class="swap-page" options.bind="anchors || []"></dropdown>
+		<progress-tracker class="progress-tracker"></progress-tracker>
         <swap-page class="swap-page" front-ends.bind="frontEnds || []"></swap-page>
     </header>
 </template>

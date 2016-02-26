@@ -1,0 +1,7 @@
+<template>
+    <div class="option" repeat.for="anchor of anchors" class.bind="anchor.selected ? 'selected' : ''">
+        <a href.bind="anchor.location" title.bind="anchor.title">
+            ${anchor.title}
+        </a>
+    </div>
+</template>
