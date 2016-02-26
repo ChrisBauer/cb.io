@@ -26,7 +26,7 @@ export class Anchor {
             
             ret.updateOffset = () => {
                     ret.position = anchor.element.offsetTop - 1;
-                    return anchor.position;
+                    return ret.position;
                 }
             ret.updateOffset();
             return ret;
