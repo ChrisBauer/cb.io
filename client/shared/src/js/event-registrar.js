@@ -1,4 +1,4 @@
-export class EventRegistrar {
+export default class EventRegistrar {
 	
 	register (element, event, callback) {
 		if (!this[event]) {

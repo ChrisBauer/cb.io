@@ -1,5 +1,5 @@
 import {bindable, inject} from 'aurelia-framework';
-import {EventRegistrar} from '../utils/event-registrar';
+import EventRegistrar from 'shared/event-registrar';
 
 const HEADER_HEIGHT = 240;
 
