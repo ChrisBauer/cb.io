@@ -17,13 +17,19 @@ export class Anchor {
 
     buildAnchor () {
         return (function Anchor (anchor) {
-            return {
+            var ret = {
                 id: anchor.anchorId,
                 title: anchor.anchorTitle,
                 location: '#' + anchor.anchorId,
                 element: anchor.element,
-                getOffset: () => anchor.element.offsetTop - 1
             };
+            
+            ret.updateOffset = () => {
+                    ret.position = anchor.element.offsetTop - 1;
+                    return anchor.position;
+                }
+            ret.updateOffset();
+            return ret;
         })(this);
     } 
 }

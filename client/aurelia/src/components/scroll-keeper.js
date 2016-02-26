@@ -41,11 +41,10 @@ export class ScrollKeeper {
 	}
 
 	updateOffsets () {
-		this.anchors.forEach( anchor => anchor.position = anchor.getOffset() );
+		this.anchors.forEach( anchor => anchor.updateOffset() );
 	}
 
 	notify (currentAnchor) {
-		console.log(currentAnchor);
 		this.callbacks.forEach( cb => cb(currentAnchor) );
 	}
 
@@ -54,9 +53,7 @@ export class ScrollKeeper {
 	}
 
 	registerAnchor (anchor) {
-		anchor.position = anchor.getOffset();
-
-		this.observer.observe(anchor.element.parentElement.parentElement, {childList: true, subtree: true});
+		this.observer.observe(anchor.element.parentElement, {childList: true, subtree: true});
 
 		this.anchors.push(anchor);
         this.anchors.sort( (a, b) => a.position > b.position ? 1 : a.position === b.position ? 0 : -1 );
