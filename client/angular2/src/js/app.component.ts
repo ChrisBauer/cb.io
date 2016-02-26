@@ -1,35 +1,49 @@
 import {Component, OnInit} from 'angular2/core';
 import {HTTP_PROVIDERS, Http, Response} from 'angular2/http';
 import {CONSTANTS} from './Constants';
-import {FrontEnd} from './frontEnd.interface';
 
+// Directives
 import {MarkdownComponent} from './markdown.component';
 import {SwapPageComponent} from './swap-page.component';
 import {StickyHeaderComponent} from './sticky-header.component';
+import {AnchorComponent} from './anchor.component';
+import {ProgressTrackerComponent} from './progress-tracker.component';
 
-import Utils from './shared/utils';
+// Services
+import {ScrollKeeper} from './scroll-keeper.service';
 import EventRegistrar from './shared/event-registrar';
+
+// Misc
 import 'rxjs/Rx';
+import Utils from './shared/utils';
+import {FrontEnd} from './objects/frontEnd.interface';
 
 @Component({
 	selector: 'angular-app',
-	providers: [HTTP_PROVIDERS, EventRegistrar],
-	directives: [MarkdownComponent, SwapPageComponent, StickyHeaderComponent],
+	providers: [HTTP_PROVIDERS, EventRegistrar, ScrollKeeper],
+	directives: [
+        MarkdownComponent,
+        SwapPageComponent,
+        StickyHeaderComponent,
+        AnchorComponent,
+        ProgressTrackerComponent
+    ],
 	template: `
         <div>
             <header>
 				<div class="title">Chris Bauer</div>
+                <progress-tracker class="progress-tracker"></progress-tracker>
 				<swap-page [frontEnds]="frontEnds" class="swap-page"></swap-page>
 			</header>
             <sticky-header [frontEnds]="frontEnds"></sticky-header>
 			<div>
 				<section class="about">
-					<a id="about"></a>
+                    <anchor [anchorId]="'about'" [anchorTitle]="'About'"></anchor>
 					<h3>About</h3>
 					<markdown [mdSrc]="aboutMD"></markdown>
 				</section>
 				<section class="resume">
-					<a id="resume"></a>
+                    <anchor [anchorId]="'resume'" [anchorTitle]="'Resume'"></anchor>
 					<h3>Resume</h3>
 					<markdown [mdSrc]="resumeMD"></markdown>
 					<!-- <p>{{md}}</p> -->

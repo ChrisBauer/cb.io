@@ -1,6 +1,5 @@
 import {Component} from 'angular2/core';
-import {Http} from 'angular2/http';
-import {FrontEnd} from './frontEnd.interface';
+import {FrontEnd} from './objects/frontEnd.interface';
 
 @Component({
 	selector: 'swap-page',
@@ -13,8 +12,4 @@ import {FrontEnd} from './frontEnd.interface';
 })
 export class SwapPageComponent {
 	public frontEnds: FrontEnd[];
-
-	constructor(private http: Http) {
-	
-	}
 }
