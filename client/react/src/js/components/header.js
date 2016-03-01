@@ -27,7 +27,7 @@ module.exports = React.createClass({
 		return (
 			<div className="header-wrapper">
 				<StaticHeader frontEnds={this.state.frontEnds} />
-				<StickyHeader frontEnds={this.state.frontEnds} registrar={this.props.registrar} />
+				<StickyHeader frontEnds={this.state.frontEnds} />
 			</div>
 		);
 	}

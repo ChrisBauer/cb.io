@@ -1,7 +1,11 @@
 var EventRegistrar = require('../../../dist/js/event-registrar').default;
 var registrar = new EventRegistrar();
 
-var ScrollKeeper = require('./scroll-keeper')(registrar);
+var ScrollKeeper = require('./scroll-keeper');
+var injector = require('./injector');
+
+injector.register({EventRegistrar: registrar});
+injector.register({ScrollKeeper: ScrollKeeper()});
 
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -9,9 +13,10 @@ var Header = require('./components/header');
 var Section = require('./components/section');
 var CONSTANTS = require('./Constants');
 
+
 ReactDOM.render(
 	<div>
-		<Header registrar={registrar} />
+		<Header />
 	</div>,
 	document.getElementById('header')
 );

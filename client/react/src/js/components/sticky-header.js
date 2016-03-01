@@ -3,6 +3,9 @@ var SwapPage = require('./swap-page');
 var ProgressTracker = require('./progress-tracker');
 var classNames = require('classnames');
 
+var injector = require('../injector');
+var EventRegistrar = injector.get('EventRegistrar');
+
 const HEADER_HEIGHT = 240;
 
 module.exports = React.createClass({
@@ -17,7 +20,7 @@ module.exports = React.createClass({
 		return (document.documentElement.scrollTop || document.body.scrollTop) > HEADER_HEIGHT;
 	},
 	setupScrollHandler: function setupScrollHandler () {
-        this.props.registrar.register(window, 'onscroll', () => {
+        EventRegistrar.register(window, 'onscroll', () => {
 			if (this.isVisible() !== this.state.isVisible) {
 				this.setState({isVisible: !this.state.isVisible});
 			}

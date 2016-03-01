@@ -1,6 +1,8 @@
 var React = require('react');
 var classNames = require('classnames');
-var ScrollKeeper = require('../scroll-keeper')();
+
+var injector = require('../injector');
+var ScrollKeeper = injector.get('ScrollKeeper');
 
 module.exports = React.createClass({
     displayName: 'ProgressTracker',

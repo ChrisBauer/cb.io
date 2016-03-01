@@ -1,25 +1,19 @@
 
-var scrollKeeper = null;
-var EventRegistrar = null;
 
 var callbacks = [];
 
-module.exports = function getScrollKeeper (registrar) {
+module.exports = function ScrollKeeper () {
         
-    if (registrar && !EventRegistrar) {
-        EventRegistrar = registrar;
-    }
-    
-    if (scrollKeeper !== null) return scrollKeeper;
-    
+    var injector = require('./injector');
+    var EventRegistrar = injector.get('EventRegistrar');
+
     function setupWatcher () {
         EventRegistrar.register(window, 'onscroll', () => {
             checkContentSection();
         });
     }
-    
 
-    scrollKeeper = {
+    var scrollKeeper = {
         anchors: [],
     };
     
