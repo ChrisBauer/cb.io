@@ -5,7 +5,7 @@ var ScrollKeeper = require('./scroll-keeper');
 var injector = require('./injector');
 
 injector.register({EventRegistrar: registrar});
-injector.register({ScrollKeeper: ScrollKeeper()});
+injector.register({ScrollKeeper: ScrollKeeper(injector.getContainer())});
 
 var React = require('react');
 var ReactDOM = require('react-dom');

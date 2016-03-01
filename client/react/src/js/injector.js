@@ -15,7 +15,13 @@ function Injector (id, parentId) {
                     console.error('attempted to register key ' + key + ', but ' +
                         'it was already registered');
                 }
-                acc[key] = newDeps[key];
+                if (Array.isArray(newDeps[key])) {
+                    var dep = newDeps[key];
+                    acc[key] = dep[0][dep[1]](dep[2]);
+                }
+                else {
+                    acc[key] = newDeps[key];
+                }
                 return acc;
             }, deps);
         },
@@ -39,7 +45,7 @@ module.exports = {
     register: (newDeps) => injectorMap.root.register(newDeps),
     registerInSequence: (newDepSequence) => injectorMap.root.registerInSequence(newDepSequence),
     // custom
-    getInjector: (id) => injectorMap[id] || injectorMap.root || null,
+    getContainer: (id) => injectorMap[id] || injectorMap.root || null,
     createContainer: (id, parentId) => {
         if (injectorMap[id]) {
             // throw?
