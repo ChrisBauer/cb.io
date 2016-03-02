@@ -41,6 +41,6 @@ function StickyHeader (EventRegistrar) {
     });
 }
 
-StickyHeader._inject = true;
+StickyHeader._inject = ['EventRegistrar'];
 
 module.exports = StickyHeader;

@@ -55,9 +55,12 @@ module.exports = {
         return injectorMap[id];
     },
     invoke: (needsInjection) => {
-        if (typeof needsInjection === 'function' && needsInjection._inject === true) {
-            var args = needsInjection.toString().match(/\([a-zA-Z0-9,_\$\ ]*\)/)[0];
-            args = args.substring(1, args.length - 1).split(',');
+        if (typeof needsInjection === 'function' && needsInjection._inject !== undefined) {
+            // beautiful reflection code that won't work when minified
+            // so we follow the Angular 1 pattern of creating an array of deps and attaching it
+            // var args = needsInjection.toString().match(/\([a-zA-Z0-9,_\$\ ]*\)/)[0];
+            // args = args.substring(1, args.length - 1).split(',');
+            var args = needsInjection._inject;
             var deps = args.map( (arg) => injectorMap.root.get(arg.trim()) );
             return needsInjection.apply(needsInjection, deps);
         }

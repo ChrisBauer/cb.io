@@ -62,6 +62,6 @@ function ScrollKeeper (EventRegistrar) {
     return scrollKeeper;
 }
 
-ScrollKeeper._inject = true;
+ScrollKeeper._inject = ['EventRegistrar'];
 
 module.exports = ScrollKeeper;

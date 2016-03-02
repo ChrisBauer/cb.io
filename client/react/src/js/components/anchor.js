@@ -32,6 +32,6 @@ function Anchor (ScrollKeeper) {
     });
 }
 
-Anchor._inject = true;
+Anchor._inject = ['ScrollKeeper'];
 
 module.exports = Anchor;

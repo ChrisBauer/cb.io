@@ -37,6 +37,6 @@ function ProgressTracker(ScrollKeeper) {
     });
 }
 
-ProgressTracker._inject = true;
+ProgressTracker._inject = ['ScrollKeeper'];
 
 module.exports = ProgressTracker;
