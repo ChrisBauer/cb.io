@@ -53,5 +53,16 @@ module.exports = {
         }
         injectorMap[id] = Injector(id);
         return injectorMap[id];
+    },
+    invoke: (needsInjection) => {
+        if (typeof needsInjection === 'function' && needsInjection._inject === true) {
+            var args = needsInjection.toString().match(/\([a-zA-Z0-9,_\$\ ]*\)/)[0];
+            args = args.substring(1, args.length - 1).split(',');
+            var deps = args.map( (arg) => injectorMap.root.get(arg.trim()) );
+            return needsInjection.apply(needsInjection, deps);
+        }
+        else {
+            return needsInjection;
+        }
     }
 };

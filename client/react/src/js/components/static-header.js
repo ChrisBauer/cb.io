@@ -1,6 +1,7 @@
 var React = require('react');
 var SwapPage = require('./swap-page');
-var ProgressTracker = require('./progress-tracker');
+var injector = require('../injector');
+var ProgressTracker = injector.invoke(require('./progress-tracker'));
 
 module.exports = React.createClass({
 	displayName: 'StaticHeader',

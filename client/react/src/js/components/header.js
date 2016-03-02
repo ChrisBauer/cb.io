@@ -1,6 +1,7 @@
 var React = require('react');
-var StaticHeader = require('./static-header');
-var StickyHeader = require('./sticky-header');
+var injector = require('../injector');
+var StaticHeader = injector.invoke(require('./static-header'));
+var StickyHeader = injector.invoke(require('./sticky-header'));
 var CONSTANTS = require('../Constants.js');
 var Utils = require('../../../../dist/js/utils').default;
 

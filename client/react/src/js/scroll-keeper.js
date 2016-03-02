@@ -1,10 +1,6 @@
-
-
 var callbacks = [];
 
-module.exports = function ScrollKeeper (container) {
-    var injector = container ? container : require('./injector');    
-    var EventRegistrar = injector.get('EventRegistrar');
+function ScrollKeeper (EventRegistrar) {
 
     function setupWatcher () {
         EventRegistrar.register(window, 'onscroll', () => {
@@ -65,3 +61,7 @@ module.exports = function ScrollKeeper (container) {
 
     return scrollKeeper;
 }
+
+ScrollKeeper._inject = true;
+
+module.exports = ScrollKeeper;

@@ -1,11 +1,4 @@
-var EventRegistrar = require('../../../dist/js/event-registrar').default;
-var registrar = new EventRegistrar();
-
-var ScrollKeeper = require('./scroll-keeper');
-var injector = require('./injector');
-
-injector.register({EventRegistrar: registrar});
-injector.register({ScrollKeeper: ScrollKeeper(injector.getContainer())});
+var injectorConfig = require('./injector-config').init();
 
 var React = require('react');
 var ReactDOM = require('react-dom');

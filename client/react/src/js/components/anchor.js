@@ -1,5 +1,4 @@
 var React = require('react');
-var ScrollKeeper = require('../scroll-keeper')();
 
 function buildAnchor (anchorId, anchorTitle) {
     var ret = {
@@ -17,16 +16,22 @@ function buildAnchor (anchorId, anchorTitle) {
     return ret;
 }
 
-module.exports = React.createClass({
-    displayName: 'Anchor',
-    componentDidMount: function componentDidMount () {
-        ScrollKeeper.registerAnchor(buildAnchor(this.props.anchorId, this.props.anchorTitle));
-    },
-    render: function () {
-        return (
-            <div className="anchor-wrapper">
-                <a className="anchor" id={this.props.anchorId}></a>
-            </div>
-        );
-    }
-})
+function Anchor (ScrollKeeper) {
+    return React.createClass({
+        displayName: 'Anchor',
+        componentDidMount: function componentDidMount () {
+            ScrollKeeper.registerAnchor(buildAnchor(this.props.anchorId, this.props.anchorTitle));
+        },
+        render: function () {
+            return (
+                <div className="anchor-wrapper">
+                    <a className="anchor" id={this.props.anchorId}></a>
+                </div>
+            );
+        }
+    });
+}
+
+Anchor._inject = true;
+
+module.exports = Anchor;
