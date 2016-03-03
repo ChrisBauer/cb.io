@@ -6,13 +6,11 @@ function init () {
     var injector = require('./injector');
 
     var EventRegistrar = require('../../../dist/js/event-registrar').default;
-    var registrar = new EventRegistrar();
+    var ScrollKeeper = require('./scroll-keeper');
 
-    injector.register({EventRegistrar: registrar});
+    var registrar = function () { return new EventRegistrar() };
 
-    var ScrollKeeper = injector.invoke(require('./scroll-keeper'));
-
-    injector.register({ScrollKeeper: ScrollKeeper});
+    injector.register({ScrollKeeper: ScrollKeeper, EventRegistrar: registrar});
 }
 
 module.exports = {

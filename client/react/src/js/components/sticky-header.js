@@ -1,6 +1,6 @@
 var React = require('react');
-var SwapPage = require('./swap-page');
 var injector = require('../injector');
+var SwapPage = injector.invoke(require('./swap-page'));
 var ProgressTracker = injector.invoke(require('./progress-tracker'));
 var classNames = require('classnames');
 
