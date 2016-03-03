@@ -96,7 +96,7 @@ function Container (id, parentId) {
             }
             // otherwise, just call the function
             else {
-                return module();
+                return module.call(module);
             }
         }
     };
