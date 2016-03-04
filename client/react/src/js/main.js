@@ -2,7 +2,7 @@ var injectorConfig = require('./injector-config').init();
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var injector = require('./injector');
+var injector = require('js-di');
 var Header = injector.invoke(require('./components/header'));
 var Section = injector.invoke(require('./components/section'));
 var CONSTANTS = require('./Constants');
