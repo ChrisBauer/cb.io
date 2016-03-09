@@ -1,5 +1,5 @@
 var React = require('react');
-var injector = require('js-di');
+var injector = require('js-di').Injector;
 var SwapPage = injector.invoke(require('./swap-page'));
 var ProgressTracker = injector.invoke(require('./progress-tracker'));
 

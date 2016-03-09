@@ -3,7 +3,7 @@ function init () {
     if (initialized) {
         return;
     }
-    var injector = require('js-di');
+    var injector = require('js-di').Injector;
 
     var EventRegistrar = require('../../../dist/js/event-registrar').default;
     var ScrollKeeper = require('./scroll-keeper');

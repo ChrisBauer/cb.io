@@ -1,5 +1,5 @@
 var React = require('react');
-var injector = require('js-di');
+var injector = require('js-di').Injector;
 var StaticHeader = injector.invoke(require('./static-header'));
 var StickyHeader = injector.invoke(require('./sticky-header'));
 var CONSTANTS = require('../Constants.js');

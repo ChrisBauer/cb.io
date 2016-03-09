@@ -1,6 +1,6 @@
 var React = require('react');
 var marked = require('marked');
-var injector = require('js-di');
+var injector = require('js-di').Injector;
 var Anchor = injector.invoke(require('./anchor'));
 var HTTP = require('../utils/http');
 
