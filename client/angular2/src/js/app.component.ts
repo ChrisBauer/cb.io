@@ -30,7 +30,7 @@ import {FrontEnd} from './objects/frontEnd.interface';
     ],
 	template: `
         <div>
-            <header>
+            <header class="static-header">
 				<div class="title">Chris Bauer</div>
                 <progress-tracker class="progress-tracker"></progress-tracker>
 				<swap-page [frontEnds]="frontEnds" class="swap-page"></swap-page>
