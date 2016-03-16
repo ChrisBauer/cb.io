@@ -229,7 +229,7 @@ section {
         padding-top: 0;
         .option {
             opacity: 1;
-            padding: 1em;
+            padding: 1em 0;
             height: 3.4em;
             border-width: 0 1px 1px 1px;
             border-bottom-color: @border;
@@ -267,7 +267,7 @@ section {
     .option {
         &:first-child {
             opacity: 1;
-            padding: 1em;
+            padding: 1em 0;
             height: 3.4em;
 
             &:after {
@@ -285,7 +285,7 @@ section {
     .option {
         &.selected {
             opacity: 1;
-            padding: 1em;
+            padding: 1em 0;
             height: 3.4em;
 
             &:after {
@@ -311,3 +311,23 @@ section {
             }
     }
 }
+
+@media (max-width: 600px) {
+    header {
+        height: 120px;
+        font-size:12px;
+        padding: 30px 10%;
+
+        div {
+            line-height: 60px;
+            width: 7em;
+        }
+
+        .progress-tracker, .swap-page {
+            padding-top:10px;
+            width: 7em;
+        }
+    }
+}
+
+
