@@ -1,7 +1,7 @@
 import {bindable, inject} from 'aurelia-framework';
 import EventRegistrar from 'shared/event-registrar';
 
-const HEADER_HEIGHT = 240;
+const HEADER_TAG = 'header-wrapper';
 
 @bindable('frontEnds')
 @inject(EventRegistrar)
@@ -12,12 +12,21 @@ export class StickyHeader {
     }
     
     attached () {
+        this.headerElement = this.getHeaderElement();
 		this.EventRegistrar.register(window, 'onscroll', () => {
-			this.isVisible = this.checkVisible();
+			this.isVisible = this.checkVisible(this.getHeaderHeight());
 		});
     }
+
+    getHeaderElement () {
+        return document.getElementsByTagName(HEADER_TAG)[0].children[0];
+    }
     
-    checkVisible () {
-        return (document.documentElement.scrollTop || document.body.scrollTop) > HEADER_HEIGHT;
+    getHeaderHeight () {
+        return this.headerElement.offsetHeight - 60;
+    }
+    
+    checkVisible (headerHeight) {
+        return (document.documentElement.scrollTop || document.body.scrollTop) > headerHeight;
     }
 }
