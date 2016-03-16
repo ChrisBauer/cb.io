@@ -1,12 +1,14 @@
-var React = require('react');
-var injector = require('js-di').Injector;
-var SwapPage = injector.invoke(require('./swap-page'));
-var ProgressTracker = injector.invoke(require('./progress-tracker'));
-var classNames = require('classnames');
+const React = require('react');
+const injector = require('js-di').Injector;
+const SwapPage = injector.invoke(require('./swap-page'));
+const ProgressTracker = injector.invoke(require('./progress-tracker'));
+const classNames = require('classnames');
 
-const HEADER_HEIGHT = 240;
+const HEADER_CLASS = 'header-wrapper';
 
 function StickyHeader (EventRegistrar) {
+    let headerElement = null;
+
     return React.createClass({
         displayName: 'StickyHeader',
         getInitialState: function getInitialState () {
@@ -15,18 +17,25 @@ function StickyHeader (EventRegistrar) {
                 isVisible: this.isVisible()
             };
         },
-        isVisible: function isVisible () {
-            return (document.documentElement.scrollTop || document.body.scrollTop) > HEADER_HEIGHT;
+        componentDidMount: function () {
+            headerElement = document.getElementsByClassName(HEADER_CLASS)[0];
+        },
+        isVisible: function isVisible (headerHeight) {
+            return (document.documentElement.scrollTop || document.body.scrollTop) > headerHeight;
         },
         setupScrollHandler: function setupScrollHandler () {
             EventRegistrar.register(window, 'onscroll', () => {
-                if (this.isVisible() !== this.state.isVisible) {
+                let headerHeight = this.getHeaderHeight();
+                if (this.isVisible(headerHeight) !== this.state.isVisible) {
                     this.setState({isVisible: !this.state.isVisible});
                 }
             });
         },
+        getHeaderHeight: function () {
+            return headerElement.offsetHeight - 60;
+        },
         render: function render () {
-            var classes = classNames({
+            let classes = classNames({
                 sticky: true,
                 visible: this.state.isVisible
             });
