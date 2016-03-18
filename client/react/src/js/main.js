@@ -1,11 +1,15 @@
-var injectorConfig = require('./injector-config').init();
+import init from './injector-config';
 
-var React = require('react');
-var ReactDOM = require('react-dom');
-var injector = require('js-di').Injector;
-var Header = injector.invoke(require('./components/header'));
-var Section = injector.invoke(require('./components/section'));
-var CONSTANTS = require('./Constants');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Injector} from 'js-di';
+import headerC from './components/header';
+import sectionC from './components/section';
+import Constants from './Constants';
+
+
+const Header = Injector.invoke(headerC);
+const Section = Injector.invoke(sectionC);
 
 
 ReactDOM.render(
@@ -17,8 +21,8 @@ ReactDOM.render(
 
 ReactDOM.render(
 	<div>
-		<Section title="About" contentUrl={CONSTANTS.ABOUT_URL} />
-		<Section title="Resume" contentUrl={CONSTANTS.RESUME_URL} />
+		<Section title="About" contentUrl={Constants.ABOUT_URL} />
+		<Section title="Resume" contentUrl={Constants.RESUME_URL} />
 	</div>,
 	document.getElementById('main')
 );

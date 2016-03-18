@@ -1,20 +1,26 @@
-var React = require('react');
-var injector = require('js-di').Injector;
-var StaticHeader = injector.invoke(require('./static-header'));
-var StickyHeader = injector.invoke(require('./sticky-header'));
-var CONSTANTS = require('../Constants.js');
-var Utils = require('../../../../dist/js/utils').default;
+import React from 'react';
+import {Injector} from 'js-di';
 
-var HTTP = require('../utils/http');
-var http = new HTTP();
+import staticHeaderC from './static-header';
+import stickyHeaderC from './sticky-header';
 
-module.exports = function () { 
+const StaticHeader = Injector.invoke(staticHeaderC);
+const StickyHeader = Injector.invoke(stickyHeaderC);
+
+import Constants from '../Constants';
+import Utils from '../../../../dist/js/utils';
+import {HTTP} from '../utils/http';
+
+const http = new HTTP();
+
+
+export default function Header () { 
     return React.createClass({
         displayName: 'Header',
         getInitialState: function () {
-            http.get(CONSTANTS.FRONT_ENDS_URL)
+            http.get(Constants.FRONT_ENDS_URL)
                 .then(http.parseJSON)
-                .then(result => Utils.processFrontEnds(result.data.frontEnds, CONSTANTS.REACT_NAME))
+                .then(result => Utils.processFrontEnds(result.data.frontEnds, Constants.REACT_NAME))
                 .then(frontEnds => {
                     this.setState({
                         frontEnds: frontEnds

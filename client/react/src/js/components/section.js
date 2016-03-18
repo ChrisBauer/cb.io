@@ -1,12 +1,14 @@
-var React = require('react');
-var marked = require('marked');
-var injector = require('js-di').Injector;
-var Anchor = injector.invoke(require('./anchor'));
-var HTTP = require('../utils/http');
+import React from 'react';
+import marked from 'marked';
+import {Injector} from 'js-di';
+import anchorC from './anchor';
 
-var http = new HTTP();
+const Anchor = Injector.invoke(anchorC);
 
-module.exports = function () {
+import {HTTP} from '../utils/http';
+let http = new HTTP();
+
+export default function Section () {
     return React.createClass({
         displayName: 'Section',
         getInitialState: function () {
@@ -24,7 +26,7 @@ module.exports = function () {
             return { __html: marked(mdContent, {sanitize: true}) };
         },
         render: function () {
-            var lc = this.props.title.toLowerCase();
+            const lc = this.props.title.toLowerCase();
             return (
                 
                     <section className={lc}>

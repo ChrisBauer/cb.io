@@ -1,4 +1,4 @@
-var Promise = require('bluebird');
+import Promise from 'bluebird';
 
 const OPS = [
 	'GET',
@@ -7,12 +7,12 @@ const OPS = [
 	'DELETE'
 ];
 
-module.exports = function HTTP () {
+export function HTTP () {
 
 	this.http = function executeHttpCall (url, method, data, headers) {
 		return new Promise ( (resolve, reject) => {
 
-			var request = new XMLHttpRequest(),
+			const request = new XMLHttpRequest(),
 				type = this.method && OPS.indexOf(this.method.toUpperCase()) < -1 ? this.method.toUpperCase() : OPS[0];
 			if (!url || typeof url !== 'string') {
 				throw 'Error: first parameter must be URL string';
@@ -58,10 +58,5 @@ module.exports = function HTTP () {
 			console.error('JSON parsing failed', ex);
 			throw (ex);
 		}
-	};			
-
-
-
-
-
+	};
 };

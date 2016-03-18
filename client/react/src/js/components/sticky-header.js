@@ -1,8 +1,13 @@
-const React = require('react');
-const injector = require('js-di').Injector;
-const SwapPage = injector.invoke(require('./swap-page'));
-const ProgressTracker = injector.invoke(require('./progress-tracker'));
-const classNames = require('classnames');
+import React from 'react';
+
+import {Injector} from 'js-di';
+import swapPageC from './swap-page';
+import progressTrackerC from './progress-tracker';
+
+const SwapPage = Injector.invoke(swapPageC);
+const ProgressTracker = Injector.invoke(progressTrackerC);
+
+import classNames from 'classnames';
 
 const BREAKPOINT_MEDIA_QUERY = 'min-width: 600px';
 const HEADER_FULL_HEIGHT = 240;
@@ -60,4 +65,4 @@ function StickyHeader (EventRegistrar, WatchBrowserSize) {
 
 StickyHeader._inject = ['EventRegistrar', 'WatchBrowserSize'];
 
-module.exports = StickyHeader;
+export default StickyHeader;

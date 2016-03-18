@@ -1,5 +1,5 @@
-var React = require('react');
-var classNames = require('classnames');
+import React from 'react';
+import classNames from 'classnames';
 
 function ProgressTracker(ScrollKeeper) {
     return React.createClass({
@@ -17,8 +17,8 @@ function ProgressTracker(ScrollKeeper) {
             }
         },
         render: function () {
-            var options = this.state.anchors.map( (anchor, i) => {
-                var classes = classNames({
+            const options = this.state.anchors.map( (anchor, i) => {
+                const classes = classNames({
                     option: true,
                     selected: anchor === this.state.currentAnchor
                 });
@@ -39,4 +39,4 @@ function ProgressTracker(ScrollKeeper) {
 
 ProgressTracker._inject = ['ScrollKeeper'];
 
-module.exports = ProgressTracker;
+export default ProgressTracker;

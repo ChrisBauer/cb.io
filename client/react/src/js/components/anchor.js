@@ -1,7 +1,7 @@
-var React = require('react');
+import React from 'react';
 
 function buildAnchor (anchorId, anchorTitle) {
-    var ret = {
+    let ret = {
         id: anchorId,
         title: anchorTitle,
         location: '#' + anchorId,
@@ -34,4 +34,4 @@ function Anchor (ScrollKeeper) {
 
 Anchor._inject = ['ScrollKeeper'];
 
-module.exports = Anchor;
+export default Anchor;

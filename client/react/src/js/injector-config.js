@@ -1,23 +1,23 @@
-var initialized = false;
+import {Injector} from 'js-di';
+import EventRegistrar from '../../../dist/js/event-registrar';
+import {ScrollKeeper} from './scroll-keeper';
+import {WatchBrowserSize} from 'watch-browser-size';
+
+let initialized = false;
 function init () {
     if (initialized) {
         return;
     }
-    var injector = require('js-di').Injector;
 
-    var EventRegistrar = require('../../../dist/js/event-registrar').default;
-    var ScrollKeeper = require('./scroll-keeper');
-    var WatchBrowserSize = require('watch-browser-size').WatchBrowserSize;
+    const registrar = function () { return new EventRegistrar() };
 
-    var registrar = function () { return new EventRegistrar() };
-
-    injector.register({
+    Injector.register({
         ScrollKeeper: ScrollKeeper,
         EventRegistrar: registrar,
         WatchBrowserSize: WatchBrowserSize
     });
 }
 
-module.exports = {
-    init: init
-};
+init();
+
+export default function noop () {};

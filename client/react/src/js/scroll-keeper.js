@@ -1,4 +1,4 @@
-var callbacks = [];
+const callbacks = [];
 
 function ScrollKeeper (EventRegistrar) {
 
@@ -8,7 +8,7 @@ function ScrollKeeper (EventRegistrar) {
         });
     }
 
-    var scrollKeeper = {
+    const scrollKeeper = {
         anchors: [],
     };
     
@@ -28,13 +28,13 @@ function ScrollKeeper (EventRegistrar) {
         };
     };
 
-    var observer = new MutationObserver( () => {
+    const observer = new MutationObserver( () => {
         updateOffsets();
     });
     
     function checkContentSection () {
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        var i = 0;
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        let i = 0;
         
         // Loop until the scrollTop is less than one of the anchor's positions. At this point,
         // we'll want to take the previous anchor
@@ -64,4 +64,4 @@ function ScrollKeeper (EventRegistrar) {
 
 ScrollKeeper._inject = ['EventRegistrar'];
 
-module.exports = ScrollKeeper;
+export { ScrollKeeper };

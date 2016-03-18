@@ -1,9 +1,13 @@
-var React = require('react');
-var injector = require('js-di').Injector;
-var SwapPage = injector.invoke(require('./swap-page'));
-var ProgressTracker = injector.invoke(require('./progress-tracker'));
+import React from 'react';
 
-module.exports = function () {
+import {Injector} from 'js-di';
+import swapPageC from './swap-page';
+import progressTrackerC from './progress-tracker';
+
+const SwapPage = Injector.invoke(swapPageC);
+const ProgressTracker = Injector.invoke(progressTrackerC);
+
+export default function StaticHeader () {
     return React.createClass({
         displayName: 'StaticHeader',
         render: function () {
