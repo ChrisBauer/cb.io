@@ -1,6 +1,4 @@
-/// <reference path="../../typings/watch-css-media/WatchCSSMedia.d.ts" />
-
-import {Component, OnInit, NgZone} from 'angular2/core';
+import {Component, OnInit, NgZone, Inject} from 'angular2/core';
 import {FrontEnd} from './objects/frontEnd.interface';
 import {ProgressTrackerComponent} from './progress-tracker.component';
 import {SwapPageComponent} from './swap-page.component';
@@ -25,13 +23,12 @@ export class StickyHeaderComponent implements OnInit {
 	public frontEnds : FrontEnd[];
 	public isVisible : boolean = false;
     public headerOffset : number = StyleConstants.FULL_HEADER_OFFSET;
-    public WatchCSSMedia: any;
     
 	constructor(
         private zone: NgZone,
-        private EventRegistrar: EventRegistrar
+        private EventRegistrar: EventRegistrar,
+        @Inject(WatchCSSMedia) private WatchCSSMedia
     ) {
-		this.WatchCSSMedia = WatchCSSMedia();
     
     }
 

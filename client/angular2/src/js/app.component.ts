@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, provide} from 'angular2/core';
 import {HTTP_PROVIDERS, Http, Response} from 'angular2/http';
 import {AppConstants, UrlConstants} from './Constants';
 
@@ -12,6 +12,8 @@ import {ProgressTrackerComponent} from './progress-tracker.component';
 // Services
 import {ScrollKeeper} from './scroll-keeper.service';
 import EventRegistrar from './shared/event-registrar';
+import {WatchCSSMedia} from 'watch-css-media';
+
 // Misc
 import 'rxjs/Rx';
 import Utils from './shared/utils';
@@ -22,7 +24,8 @@ import {FrontEnd} from './objects/frontEnd.interface';
 	providers: [
         HTTP_PROVIDERS,
         ScrollKeeper,
-        EventRegistrar
+        EventRegistrar,
+        provide(WatchCSSMedia, {useValue: WatchCSSMedia()})
     ],
 	directives: [
         MarkdownComponent,
