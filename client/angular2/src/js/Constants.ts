@@ -1,5 +1,6 @@
+export {UrlConstants} from './shared/url-constants';
+export {StyleConstants} from './shared/style-constants';
 
-
-export var CONSTANTS: any = {
-	'RETHINK_BASE_URL': 'http://chrisbauer.io:9000/rethink/'
-}
+export const AppConstants: any = {
+	APP_NAME: 'Angular 2'
+};

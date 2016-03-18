@@ -1,6 +1,6 @@
 import {Component, OnInit} from 'angular2/core';
 import {HTTP_PROVIDERS, Http, Response} from 'angular2/http';
-import {CONSTANTS} from './Constants';
+import {AppConstants, UrlConstants} from './Constants';
 
 // Directives
 import {MarkdownComponent} from './markdown.component';
@@ -68,22 +68,22 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit () {
-		this.http.get(CONSTANTS.RETHINK_BASE_URL + 'about')
+		this.http.get(UrlConstants.RETHINK_BASE_URL + UrlConstants.ABOUT_URL)
 			.map(res => res.json())
 			.subscribe(res => {
 				this.aboutMD = res.content;
 			});
             
-        this.http.get(CONSTANTS.RETHINK_BASE_URL + 'resume')
+        this.http.get(UrlConstants.RETHINK_BASE_URL + UrlConstants.RESUME_URL)
 			.map(res => res.json())
 			.subscribe(res => {
 				this.resumeMD = res.content;
 			});
 		
-		this.http.get(CONSTANTS.RETHINK_BASE_URL + 'frontEnds')
+		this.http.get(UrlConstants.RETHINK_BASE_URL + UrlConstants.FRONT_ENDS_URL)
 			.map(res => res.json())
 			.subscribe(res => {
-				this.frontEnds = Utils.processFrontEnds(res.frontEnds, CONSTANTS.APP_NAME);
+				this.frontEnds = Utils.processFrontEnds(res.frontEnds, AppConstants.APP_NAME);
 			});
 	}
 }
