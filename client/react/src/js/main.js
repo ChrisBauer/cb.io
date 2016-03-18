@@ -21,8 +21,8 @@ ReactDOM.render(
 
 ReactDOM.render(
 	<div>
-		<Section title="About" contentUrl={UrlConstants.ABOUT_URL} />
-		<Section title="Resume" contentUrl={UrlConstants.RESUME_URL} />
+		<Section title="About" contentUrl={UrlConstants.RETHINK_BASE_URL + UrlConstants.ABOUT_URL} />
+		<Section title="Resume" contentUrl={UrlConstants.RETHINK_BASE_URL + UrlConstants.RESUME_URL} />
 	</div>,
 	document.getElementById('main')
 );

@@ -18,7 +18,7 @@ export default function Header () {
     return React.createClass({
         displayName: 'Header',
         getInitialState: function () {
-            http.get(UrlConstants.FRONT_ENDS_URL)
+            http.get(UrlConstants.RETHINK_BASE_URL + UrlConstants.FRONT_ENDS_URL)
                 .then(http.parseJSON)
                 .then(result => Utils.processFrontEnds(result.data.frontEnds, AppConstants.REACT_NAME))
                 .then(frontEnds => {
