@@ -12,7 +12,6 @@ import {ProgressTrackerComponent} from './progress-tracker.component';
 // Services
 import {ScrollKeeper} from './scroll-keeper.service';
 import EventRegistrar from './shared/event-registrar';
-
 // Misc
 import 'rxjs/Rx';
 import Utils from './shared/utils';
@@ -20,7 +19,11 @@ import {FrontEnd} from './objects/frontEnd.interface';
 
 @Component({
 	selector: 'angular-app',
-	providers: [HTTP_PROVIDERS, EventRegistrar, ScrollKeeper],
+	providers: [
+        HTTP_PROVIDERS,
+        ScrollKeeper,
+        EventRegistrar
+    ],
 	directives: [
         MarkdownComponent,
         SwapPageComponent,

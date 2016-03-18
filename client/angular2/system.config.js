@@ -14,6 +14,7 @@ System.config({
         'angular2/platform/*': 'node_modules/angular2/platform/*',
         'marked': 'node_modules/marked/marked.min',
         'rxjs/*': 'node_modules/rxjs/*',
-		'shared/*': '../../shared/src/js/*'
+		'shared/*': '../../shared/src/js/*',
+        'watch-css-media': 'node_modules/watch-css-media/index'
     }
 });
