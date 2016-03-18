@@ -1,7 +1,7 @@
 import {inject, bindable} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import marked from 'marked';
-import CONSTANTS from '../Constants';
+import {UrlConstants} from '../Constants';
 
 @bindable('srcUrl')
 @inject(HttpClient)
@@ -9,7 +9,7 @@ export class Markdown {
     
     constructor (http) {
 		this.http = http.configure(config => {
-			config.withBaseUrl(CONSTANTS.RETHINK_BASE_URL);
+			config.withBaseUrl(UrlConstants.RETHINK_BASE_URL);
 		});
     }
     

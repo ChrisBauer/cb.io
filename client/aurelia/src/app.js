@@ -1,9 +1,10 @@
 import {inject} from 'aurelia-framework';
+import {UrlConstants} from './Constants';
 
 export class App {
     constructor() {
-		this.aboutUrl = '/about';
-		this.resumeUrl = '/resume';
+		this.aboutUrl = UrlConstants.ABOUT_URL;
+		this.resumeUrl = UrlConstants.RESUME_URL;
     }
 
 	attached () {
