@@ -8,14 +8,7 @@ const SwapPage = Injector.invoke(swapPageC);
 const ProgressTracker = Injector.invoke(progressTrackerC);
 
 import classNames from 'classnames';
-
-// I don't like having these magic CSS values here, but
-// the alternative is either to grab the DOM element
-// or to search through document.styleSheets - regardless,
-// it's still coupled at least to the class name
-const WIDTH_BREAKPOINT = '600px',
-      SMALL_HEADER_OFFSET = 60,
-      FULL_HEADER_OFFSET = 240;
+import {StyleConstants} from '../Constants';
 
 function StickyHeader (EventRegistrar, WatchCSSMedia) {
     let headerElement = null;
@@ -37,10 +30,10 @@ function StickyHeader (EventRegistrar, WatchCSSMedia) {
             });
         },
         setupSizeListener: function setupSizeListener () {
-            WatchCSSMedia.onWidthGreaterThan(WIDTH_BREAKPOINT, (event) => {
+            WatchCSSMedia.onWidthGreaterThan(StyleConstants.WIDTH_BREAKPOINT, (event) => {
                 // update the headerOffset state value
                 this.setState({
-                    headerOffset: event.matches ? FULL_HEADER_OFFSET : SMALL_HEADER_OFFSET,
+                    headerOffset: event.matches ? StyleConstants.FULL_HEADER_OFFSET : StyleConstants.SMALL_HEADER_OFFSET,
                 });
 
                 // because isVisible() relies on state, there must be sequential calls to

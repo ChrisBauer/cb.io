@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import {Injector} from 'js-di';
 import headerC from './components/header';
 import sectionC from './components/section';
-import Constants from './Constants';
+import {UrlConstants} from './Constants';
 
 
 const Header = Injector.invoke(headerC);
@@ -21,8 +21,8 @@ ReactDOM.render(
 
 ReactDOM.render(
 	<div>
-		<Section title="About" contentUrl={Constants.ABOUT_URL} />
-		<Section title="Resume" contentUrl={Constants.RESUME_URL} />
+		<Section title="About" contentUrl={UrlConstants.ABOUT_URL} />
+		<Section title="Resume" contentUrl={UrlConstants.RESUME_URL} />
 	</div>,
 	document.getElementById('main')
 );

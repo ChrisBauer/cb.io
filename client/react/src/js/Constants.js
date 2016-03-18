@@ -1,6 +1,6 @@
-export default {
-    ABOUT_URL: 'http://chrisbauer.io:9000/rethink/about',
-    RESUME_URL: 'http://chrisbauer.io:9000/rethink/resume',
-    FRONT_ENDS_URL: 'http://chrisbauer.io:9000/rethink/frontEnds',
+export {UrlConstants} from '../../../dist/js/url-constants';
+export {StyleConstants} from '../../../dist/js/style-constants';
+
+export const AppConstants = {
     REACT_NAME: 'React'
 }

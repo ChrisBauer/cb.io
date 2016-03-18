@@ -7,7 +7,7 @@ import stickyHeaderC from './sticky-header';
 const StaticHeader = Injector.invoke(staticHeaderC);
 const StickyHeader = Injector.invoke(stickyHeaderC);
 
-import Constants from '../Constants';
+import {UrlConstants, AppConstants} from '../Constants';
 import Utils from '../../../../dist/js/utils';
 import {HTTP} from '../utils/http';
 
@@ -18,9 +18,9 @@ export default function Header () {
     return React.createClass({
         displayName: 'Header',
         getInitialState: function () {
-            http.get(Constants.FRONT_ENDS_URL)
+            http.get(UrlConstants.FRONT_ENDS_URL)
                 .then(http.parseJSON)
-                .then(result => Utils.processFrontEnds(result.data.frontEnds, Constants.REACT_NAME))
+                .then(result => Utils.processFrontEnds(result.data.frontEnds, AppConstants.REACT_NAME))
                 .then(frontEnds => {
                     this.setState({
                         frontEnds: frontEnds
