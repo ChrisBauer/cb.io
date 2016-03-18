@@ -1,32 +1,35 @@
 import {bindable, inject} from 'aurelia-framework';
+import {WatchCSSMedia} from 'watch-css-media';
 import EventRegistrar from 'shared/event-registrar';
+import {StyleConstants} from '../Constants';
 
 const HEADER_TAG = 'header-wrapper';
 
 @bindable('frontEnds')
-@inject(EventRegistrar)
+@inject(EventRegistrar, WatchCSSMedia)
 export class StickyHeader {
-    constructor (EventRegistrar) {
+    constructor (EventRegistrar, WatchCSSMedia) {
 		this.EventRegistrar = EventRegistrar;
+        this.WatchCSSMedia = WatchCSSMedia;
         this.isVisible = false;
+        this.headerOffset = StyleConstants.FULL_HEADER_OFFSET;
     }
     
     attached () {
-        this.headerElement = this.getHeaderElement();
 		this.EventRegistrar.register(window, 'onscroll', () => {
-			this.isVisible = this.checkVisible(this.getHeaderHeight());
+			this.isVisible = this.checkVisible(this.headerOffset);
 		});
+
+        this.WatchCSSMedia.onWidthGreaterThan(StyleConstants.WIDTH_BREAKPOINT,
+            (event) => {
+                this.headerOffset = event.matches ?
+                    StyleConstants.FULL_HEADER_OFFSET : StyleConstants.SMALL_HEADER_OFFSET;
+                this.isVisible = this.checkVisible();
+            }
+        );
     }
 
-    getHeaderElement () {
-        return document.getElementsByTagName(HEADER_TAG)[0].children[0];
-    }
-    
-    getHeaderHeight () {
-        return this.headerElement.offsetHeight - 60;
-    }
-    
-    checkVisible (headerHeight) {
-        return (document.documentElement.scrollTop || document.body.scrollTop) > headerHeight;
+    checkVisible () {
+        return (document.documentElement.scrollTop || document.body.scrollTop) > this.headerOffset;
     }
 }

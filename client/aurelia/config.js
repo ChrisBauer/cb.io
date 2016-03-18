@@ -33,10 +33,15 @@ System.config({
     "font-awesome": "npm:font-awesome@4.5.0",
     "jquery": "npm:jquery@2.2.1",
     "marked": "npm:marked@0.3.5",
+    "rxjs": "npm:rxjs@5.0.0-beta.2",
     "systemjs": "npm:systemjs@0.19.17",
     "text": "github:systemjs/plugin-text@0.0.3",
+    "watch-css-media": "npm:watch-css-media@0.0.2",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
+    },
+    "github:jspm/nodelibs-buffer@0.1.0": {
+      "buffer": "npm:buffer@3.6.0"
     },
     "github:jspm/nodelibs-path@0.1.0": {
       "path-browserify": "npm:path-browserify@0.0.0"
@@ -185,6 +190,14 @@ System.config({
     "npm:babel-runtime@5.8.35": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:buffer@3.6.0": {
+      "base64-js": "npm:base64-js@0.0.8",
+      "child_process": "github:jspm/nodelibs-child_process@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "ieee754": "npm:ieee754@1.1.6",
+      "isarray": "npm:isarray@1.0.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:core-js@2.1.1": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
@@ -210,6 +223,10 @@ System.config({
     "npm:process@0.11.2": {
       "assert": "github:jspm/nodelibs-assert@0.1.0"
     },
+    "npm:rxjs@5.0.0-beta.2": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:systemjs@0.19.17": {
       "es6-module-loader": "npm:es6-module-loader@0.17.11",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -220,6 +237,9 @@ System.config({
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:watch-css-media@0.0.2": {
+      "rxjs-es": "npm:rxjs-es@5.0.0-beta.2"
     },
     "npm:when@3.7.7": {
       "process": "github:jspm/nodelibs-process@0.1.2"
