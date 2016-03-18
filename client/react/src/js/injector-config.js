@@ -1,7 +1,7 @@
 import {Injector} from 'js-di';
 import EventRegistrar from '../../../dist/js/event-registrar';
 import {ScrollKeeper} from './scroll-keeper';
-import {WatchBrowserSize} from 'watch-browser-size';
+import {WatchCSSMedia} from 'watch-css-media';
 
 let initialized = false;
 function init () {
@@ -14,7 +14,7 @@ function init () {
     Injector.register({
         ScrollKeeper: ScrollKeeper,
         EventRegistrar: registrar,
-        WatchBrowserSize: WatchBrowserSize
+        WatchCSSMedia: WatchCSSMedia
     });
 }
 

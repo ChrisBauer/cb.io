@@ -9,43 +9,57 @@ const ProgressTracker = Injector.invoke(progressTrackerC);
 
 import classNames from 'classnames';
 
-const BREAKPOINT_MEDIA_QUERY = 'min-width: 600px';
-const HEADER_FULL_HEIGHT = 240;
-const HEADER_MIN_HEIGHT = 60;
+// I don't like having these magic CSS values here, but
+// the alternative is either to grab the DOM element
+// or to search through document.styleSheets - regardless,
+// it's still coupled at least to the class name
+const WIDTH_BREAKPOINT = '600px',
+      SMALL_HEADER_OFFSET = 60,
+      FULL_HEADER_OFFSET = 240;
 
-function StickyHeader (EventRegistrar, WatchBrowserSize) {
+function StickyHeader (EventRegistrar, WatchCSSMedia) {
     let headerElement = null;
 
     return React.createClass({
         displayName: 'StickyHeader',
         getInitialState: function getInitialState () {
             this.setupScrollHandler();
-            this.setupSizeListener();
             return {
-                isVisible: this.isVisible()
+                isVisible: false
             };
         },
         isVisible: function isVisible () {
-            return (document.documentElement.scrollTop || document.body.scrollTop) > 
-                (this.state && this.state.fullHeader ? HEADER_FULL_HEIGHT : HEADER_MIN_HEIGHT);
+            return (document.documentElement.scrollTop || document.body.scrollTop) > this.state.headerOffset;
         },
         setupScrollHandler: function setupScrollHandler () {
             EventRegistrar.register(window, 'onscroll', () => {
-                if (this.isVisible() !== this.state.isVisible) {
-                    this.setState({isVisible: !this.state.isVisible});
-                }
+                this.setState({isVisible: this.isVisible(this.state.headerOffset)});
             });
         },
         setupSizeListener: function setupSizeListener () {
-            WatchBrowserSize.addQuery(BREAKPOINT_MEDIA_QUERY, (aboveMinWidth) => {
+            WatchCSSMedia.onWidthGreaterThan(WIDTH_BREAKPOINT, (event) => {
+                // update the headerOffset state value
                 this.setState({
-                    fullHeader: aboveMinWidth
+                    headerOffset: event.matches ? FULL_HEADER_OFFSET : SMALL_HEADER_OFFSET,
                 });
 
+                // because isVisible() relies on state, there must be sequential calls to
+                // .setState(). An alternative would be to stash headerOffset in a local
+                // variable, but that seems less react-y
                 this.setState({
                     isVisible: this.isVisible()
                 });
             });
+        },
+        componentDidMount() {
+            // since the listener calls .setState(), it must occur after .getInitialState() has completed
+            this.setupSizeListener();
+        },
+        shouldComponentUpdate(nextProps, nextState) {
+            // only update the component
+            // IF there is no state yet
+            // OR IF the isVisible state has changed
+            return !this.state || nextState.isVisible !== this.state.isVisible;
         },
         render: function render () {
             let classes = classNames({
@@ -63,6 +77,6 @@ function StickyHeader (EventRegistrar, WatchBrowserSize) {
     });
 }
 
-StickyHeader._inject = ['EventRegistrar', 'WatchBrowserSize'];
+StickyHeader._inject = ['EventRegistrar', 'WatchCSSMedia'];
 
 export default StickyHeader;
