@@ -36,7 +36,7 @@ System.config({
     "rxjs": "npm:rxjs@5.0.0-beta.2",
     "systemjs": "npm:systemjs@0.19.17",
     "text": "github:systemjs/plugin-text@0.0.3",
-    "watch-css-media": "npm:watch-css-media@0.0.4",
+    "watch-css-media": "npm:watch-css-media@0.1.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -238,8 +238,8 @@ System.config({
       "inherits": "npm:inherits@2.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:watch-css-media@0.0.4": {
-      "rxjs-es": "npm:rxjs-es@5.0.0-beta.2"
+    "npm:watch-css-media@0.1.0": {
+      "rxjs-es": "npm:rxjs-es@5.0.0-beta.3"
     },
     "npm:when@3.7.7": {
       "process": "github:jspm/nodelibs-process@0.1.2"

@@ -29,7 +29,7 @@
     "systemjs": "0.19.6",
     "ts-loader": "^0.8.1",
     "tsify": "^0.13.2",
-    "watch-css-media": "0.0.x",
+    "watch-css-media": "0.1.x",
     "zone.js": "0.5.11"
   },
   "devDependencies": {
