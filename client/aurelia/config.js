@@ -1,6 +1,6 @@
 System.config({
   "defaultJSExtensions": true,
-  "transpiler": "babel",
+  "transpiler": "systemjs@0.19.17",
   "babelOptions": {
     "optional": [
       "es7.decorators",
@@ -14,6 +14,8 @@ System.config({
     "npm:*": "jspm_packages/npm/*"
   },
   "map": {
+    "-v": "npm:babel-core@5.8.38",
+    "-v-runtime": "npm:babel-runtime@5.8.38",
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.0-beta.1.2.0",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1.2.0",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.2.0",
@@ -35,6 +37,9 @@ System.config({
     "marked": "npm:marked@0.3.5",
     "rxjs": "npm:rxjs@5.0.0-beta.3",
     "systemjs": "npm:systemjs@0.19.17",
+    "systemjs-runtime": "npm:babel-runtime@5.8.38",
+    "systemjs@0.19.17": "npm:babel-core@5.8.38",
+    "systemjs@0.19.17-runtime": "npm:babel-runtime@5.8.38",
     "text": "github:systemjs/plugin-text@0.0.3",
     "watch-css-media": "npm:watch-css-media@0.1.2",
     "github:jspm/nodelibs-assert@0.1.0": {
