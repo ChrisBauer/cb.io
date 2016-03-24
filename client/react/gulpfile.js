@@ -5,8 +5,17 @@ var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
+var shell = require('gulp-shell');
 
-gulp.task('build', function () {
+gulp.task('build-shared-js', shell.task([
+    'cd .. && npm run build-shared-js'
+]));
+
+gulp.task('build-shared-js-prod', shell.task([
+    'cd .. && npm run build-shared-js-prod'
+]));
+
+gulp.task('build', ['build-shared-js'], function () {
     return browserify({
         entries: 'src/js/main.js',
         extensions: ['.js'],
@@ -18,7 +27,7 @@ gulp.task('build', function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build-prod', function () {
+gulp.task('build-prod', ['build-shared-js'], function () {
     return browserify({
         entries: 'src/js/main.js',
         extensions: ['.js'],
