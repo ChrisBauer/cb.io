@@ -7,7 +7,7 @@
   "scripts": {
     "tsc": "tsc --outDir dist/js --rootDir src/js",
     "tsc:w": "tsc --outDir dist/js --rootDir src/js -w",
-    "tsc-prod": "browserify src/js/main.ts -p [ tsify ] > dist/js/main.min.js",
+    "tsc-prod": "browserify typings/browser/ambient/es6-shim/index.d.ts src/js/main.ts -p [ tsify ] > dist/js/main.min.js",
     "lite": "lite-server",
     "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
     "copyShared": "mkdir -p src/js/shared && cp ../shared/src/js/*.js src/js/shared/",
@@ -18,23 +18,26 @@
   },
   "license": "ISC",
   "dependencies": {
-    "angular2": "2.0.0-beta.3",
+    "angular2": "2.0.0-beta.12",
     "browserify": "^13.0.0",
     "es6-promise": "^3.0.2",
-    "es6-shim": "^0.33.3",
+    "es6-shim": "^0.35.0",
     "gulp-typescript": "^2.12.0",
     "marked": "^0.3.5",
     "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.0",
-    "systemjs": "0.19.6",
+    "rxjs": "5.0.0-beta.2",
+    "systemjs": "0.19.24",
     "ts-loader": "^0.8.1",
     "tsify": "^0.13.2",
     "watch-css-media": "0.1.x",
-    "zone.js": "0.5.11"
+    "zone.js": "^0.6.4"
   },
   "devDependencies": {
-    "concurrently": "^1.0.0",
-    "lite-server": "^2.0.1",
-    "typescript": "^1.7.5"
+    "bluebird": "^3.3.4",
+    "concurrently": "^2.0.0",
+    "es6-promise": "^3.1.2",
+    "lite-server": "^2.1.0",
+    "typescript": "^1.8.9",
+    "typings": "^0.7.9"
   }
 }
