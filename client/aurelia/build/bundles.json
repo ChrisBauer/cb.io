@@ -25,7 +25,10 @@
         "aurelia-loader-default",
         "aurelia-history-browser",
         "aurelia-logging-console",
-        "shared/utils"
+        "marked",
+        "watch-css-media",
+        "rxjs",
+        "shared/*"
       ],
       "options": {
         "inject": true,
