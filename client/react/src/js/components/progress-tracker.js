@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-function ProgressTracker(ScrollKeeper) {
+function ProgressTracker(ScrollKeeper, EventRegistrar) {
     return React.createClass({
         displayName: 'ProgressTracker',
         getInitialState: function () {
@@ -11,6 +11,7 @@ function ProgressTracker(ScrollKeeper) {
                     currentAnchor: currentAnchor
                 });
             });
+            EventRegistrar.register(window, 'onscroll', () => this.deactivate() );
             return {
                 anchors: [],
                 currentAnchor: null,
@@ -57,6 +58,6 @@ function ProgressTracker(ScrollKeeper) {
     });
 }
 
-ProgressTracker._inject = ['ScrollKeeper'];
+ProgressTracker._inject = ['ScrollKeeper', 'EventRegistrar'];
 
 export default ProgressTracker;

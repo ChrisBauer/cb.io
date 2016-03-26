@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export default function SwapPage () {
+function SwapPage (EventRegistrar) {
     return React.createClass({
         displayName: 'SwapPage',
         getInitialState: function () {
+            EventRegistrar.register(window, 'onscroll', () => this.deactivate() );
             return {
                 active: false
             };
@@ -42,4 +43,8 @@ export default function SwapPage () {
             );
         }
     });
-};
+}
+
+SwapPage._inject = ['EventRegistrar'];
+
+export default SwapPage;
