@@ -1,10 +1,13 @@
 import {inject} from 'aurelia-framework';
 import {ScrollKeeper} from './scroll-keeper';
+import EventRegistrar from 'shared/event-registrar';
 
-@inject(ScrollKeeper)
+@inject(ScrollKeeper, EventRegistrar)
 export class ProgressTracker {
 
-	constructor (ScrollKeeper) {
+	constructor (ScrollKeeper, EventRegistrar) {
+        EventRegistrar.register(window, 'onscroll', () => this.deactivate() );
+        this.EventRegistrar = EventRegistrar;
 		this.anchors = ScrollKeeper.anchors;
 	}
 

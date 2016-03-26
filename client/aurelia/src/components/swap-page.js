@@ -1,8 +1,12 @@
-import {bindable} from 'aurelia-framework';
+import {bindable, inject} from 'aurelia-framework';
+import EventRegistrar from 'shared/event-registrar';
 
 @bindable('frontEnds')
+@inject(EventRegistrar)
 export class SwapPage {
-	constructor () {
+	constructor (EventRegistrar) {
+        EventRegistrar.register(window, 'onscroll', () => this.deactivate() );
+        this.EventRegistrar = EventRegistrar;
         this.active = false;    
     }
 
