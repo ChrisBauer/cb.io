@@ -14,8 +14,8 @@ const HEADER_CLASS : string = 'static-header';
 	template: `
 		<header [ngClass]="{sticky: true, visible: isVisible}">
 			<div class="title">Chris Bauer</div>
-            <progress-tracker class="progress-tracker"></progress-tracker>
-			<swap-page [frontEnds]="frontEnds" class="swap-page"></swap-page>
+            <progress-tracker></progress-tracker>
+			<swap-page [frontEnds]="frontEnds"></swap-page>
 		</header>
 	`
 })

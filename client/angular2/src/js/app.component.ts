@@ -38,8 +38,8 @@ import {FrontEnd} from './objects/frontEnd.interface';
         <div>
             <header class="static-header">
 				<div class="title">Chris Bauer</div>
-                <progress-tracker class="progress-tracker"></progress-tracker>
-				<swap-page [frontEnds]="frontEnds" class="swap-page"></swap-page>
+                <progress-tracker></progress-tracker>
+				<swap-page [frontEnds]="frontEnds"></swap-page>
 			</header>
             <sticky-header [frontEnds]="frontEnds"></sticky-header>
 			<div>
