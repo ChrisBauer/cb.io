@@ -1,7 +1,9 @@
 <template>
-    <div class="option" repeat.for="frontEnd of frontEnds">
-        <a href.bind="frontEnd.location" title.bind="frontEnd.title">
-            ${frontEnd.title}
-        </a>
+    <div class="swap-page" mouseenter.trigger="activate()" mouseleave.trigger="deactivate()" class.bind="active ? 'active' : ''">
+        <div class="option" repeat.for="frontEnd of frontEnds">
+            <a click.delegate="handleClick(frontEnd.location)" title.bind="frontEnd.title">
+                ${frontEnd.title}
+            </a>
+        </div>
     </div>
 </template>

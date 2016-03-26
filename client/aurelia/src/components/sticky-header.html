@@ -3,7 +3,7 @@
 	<require from="./progress-tracker"></require>
     <header class="sticky" class.bind="isVisible ? 'visible' : ''">
         <div class="title">Chris Bauer</div>
-		<progress-tracker class="progress-tracker"></progress-tracker>
-        <swap-page class="swap-page" front-ends.bind="frontEnds || []"></swap-page>
+		<progress-tracker></progress-tracker>
+        <swap-page front-ends.bind="frontEnds || []"></swap-page>
     </header>
 </template>

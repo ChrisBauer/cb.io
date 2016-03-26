@@ -1,7 +1,9 @@
 <template>
-    <div class="option" repeat.for="anchor of anchors" class.bind="anchor.selected ? 'selected' : ''">
-        <a href.bind="anchor.location" title.bind="anchor.title">
-            ${anchor.title}
-        </a>
+    <div class="progress-tracker" mouseenter.trigger="activate()" mouseleave.trigger="deactivate()" class.bind="active ? 'active' : ''">
+        <div class="option" repeat.for="anchor of anchors" class.bind="anchor.selected ? 'selected' : ''">
+            <a click.delegate="handleClick(anchor.location)" title.bind="anchor.title">
+                ${anchor.title}
+            </a>
+        </div>
     </div>
 </template>
