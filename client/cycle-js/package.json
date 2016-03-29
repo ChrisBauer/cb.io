@@ -1,0 +1,30 @@
+{
+  "name": "cbio-cyclejs",
+  "version": "0.0.1",
+  "description": "CycleJS implementation of cb.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "babel webpack.config.js --out-file webpack.config.es5.js",
+    "start": "webpack --config webpack.config.es5.js --progress"
+  },
+  "author": "Chris Bauer <cbauer@outlook.com> (http://github.com/chrisbauer)",
+  "license": "ISC",
+  "dependencies": {
+    "@cycle/core": "^6.0.3",
+    "@cycle/dom": "^9.2.2",
+    "@cycle/http": "^8.2.2",
+    "classnames": "^2.2.3",
+    "rx": "^4.1.0"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.7.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-react-jsx": "^6.7.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "webpack": "^1.12.14"
+  }
+}
