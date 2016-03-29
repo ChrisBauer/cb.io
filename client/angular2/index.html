@@ -3,30 +3,38 @@
   <head>
         <title>chrisbauer.io | Angular 2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-	<link href="../dist/css/reset.css" type="text/css" rel="stylesheet" />
-	<link href="../dist/css/main.css" type="text/css" rel="stylesheet" />
+    <link href="../dist/css/reset.css" type="text/css" rel="stylesheet" />
+    <link href="../dist/css/main.css" type="text/css" rel="stylesheet" />
     <script src="https://code.angularjs.org/2.0.0-beta.12/angular2-polyfills.js"></script>
     <script src="https://code.angularjs.org/tools/system.js"></script>
     <script src="system.config.js"></script>
     <script>
-     System.import('dist/js/main.min.js')
+     System.import('dist/js/main.js')
             .then(null, console.error.bind(console));
     </script>
 
   </head>
 
   <body>
-	  <angular-app>
-		 <header>
-			<div class="title">Chris Bauer</div>
-			<div class="progress-tracker">
-				<div class="option selected"><a>About </a></div>
-			</div>
-			<div class="swap-page">
-				<div class="option"><a>Angular 2 </a></div>
-			</div>
-		</header>
-	  </angular-app>
+      <angular-app>
+         <header>
+            <div class="title">Chris Bauer</div>
+            <div class="progress-tracker">
+                <div class="option selected"><a>About </a></div>
+            </div>
+            <div class="swap-page">
+                <div class="option"><a>Angular 2 </a></div>
+            </div>
+        </header>
+        <section>
+            <h3>Loading...</h3>
+        </section>
+      </angular-app>
+    <footer>
+        <div><a target="_blank" href="https://github.io/ChrisBauer">Github</a></div>
+        <div><a target="_blank" href="https://www.linkedin.com/in/cbaueratwork">LinkedIn</a></div>
+        <div class="copy">&copy; 2016<br />Chris Bauer</div>
+    </footer>
   </body>
 
 </html>

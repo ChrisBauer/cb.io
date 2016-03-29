@@ -95,7 +95,7 @@ anchor, .anchor-wrapper {
     }
 }
 
-header {
+header, footer {
     height: 300px;
     padding: 100px 10%;
     background-color: @header;
@@ -107,6 +107,7 @@ header {
     a {
         .default-font;
         .roll-over-darken(white);
+        text-decoration: none;
     }
     
     div, .swap-page, .progress-tracker {
@@ -118,6 +119,11 @@ header {
         text-align: center;
         border: 1px solid @border;
         border-radius: 3px;
+    }
+
+    .copy {
+        line-height:25px;
+        padding-top: 25px;
     }
     
     &.sticky {
@@ -261,12 +267,6 @@ section {
         margin-left: -1px;
         
         line-height: initial;
-        a {
-            text-decoration: none;
-            .roll-over-darken(white);
-        }
-        
-        
         
         &:last-child {
             border-radius: 0 0 4px 4px;
@@ -329,7 +329,7 @@ section {
 }
 
 @media (max-width: 600px) {
-    header {
+    header, footer {
         height: 120px;
         font-size:12px;
         padding: 30px 10%;
@@ -337,6 +337,10 @@ section {
         div {
             line-height: 60px;
             width: 7em;
+        }
+
+        .copy {
+            padding-top: 5px;
         }
 
         .progress-tracker, .swap-page {

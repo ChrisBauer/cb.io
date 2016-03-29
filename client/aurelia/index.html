@@ -8,16 +8,25 @@
   </head>
 
   <body>
-	 <header id="outside-header">
-		<div class="title">Chris Bauer</div>
+     <header id="outside-header">
+        <div class="title">Chris Bauer</div>
         <div class="progress-tracker">
             <div class="option selected"><a href="">About </a></div>
         </div>
-		<div class="swap-page">
-			<div class="option"><a>Aurelia </a></div>
-		</div>
-	  </header>
-	  <div aurelia-app="main"></div>
+        <div class="swap-page">
+            <div class="option"><a>Aurelia </a></div>
+        </div>
+      </header>
+      <div aurelia-app="main">
+        <section>
+            <h3>Loading...</h3>
+        </section>
+      </div>
+    <footer>
+        <div><a target="_blank" href="https://github.io/ChrisBauer">Github</a></div>
+        <div><a target="_blank" href="https://www.linkedin.com/in/cbaueratwork">LinkedIn</a></div>
+        <div class="copy">&copy; 2016<br />Chris Bauer</div>
+    </footer>
 
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
