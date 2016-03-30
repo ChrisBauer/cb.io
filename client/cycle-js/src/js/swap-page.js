@@ -12,27 +12,28 @@ function intent (sources) {
         .map(ev => ev.type === 'mouseenter')
         .startWith(false);
 
-    const anchor$ = sources.DOM.select('a')
-        .events('click')
+    const anchor$ = sources.DOM.select('.swap-page a')
+        .events('click', true)
         .map(ev => ev.preventDefault() || ev)
         .combineLatest(active$, (ev, active) => ({el: ev.currentTarget, active}))
         .filter(({active}) => active === true)
-        .map(({el}) => {
-            console.log(el);
-        });
+        //TODO: this is pretty side-effect-y - how to break it out?
+        .map(({el}) => window.location.href = el.dataset.rel)
+        .startWith('');
 
     return {
         active$: active$,
-        options$: sources.options$
+        options$: sources.options$,
+        anchor$: anchor$
     };
 }
 
-function model (actions) {
-    return Observable.combineLatest(actions.active$, actions.options$, (active, options) => ({active, options}));
+function model ({active$, options$, anchor$}) {
+    return Observable.combineLatest(active$, options$, anchor$, (active, options, anchor) => ({active, options, anchor}));
 }
 
 function view (state$) {
-    const vtree$ = state$.map(({active, options}) => {
+    const vtree$ = state$.map(({active, options, anchor}) => {
             let classes = classNames({
                 'swap-page': true,
                 'active': active
@@ -41,7 +42,7 @@ function view (state$) {
                 .map(key => options[key])
                 .map(option =>
                     <div className="option">
-                        <a title={option.title} data-loc={option.location}>{option.title} </a>
+                        <a title={option.title} attributes={{'data-rel': option.location }}>{option.title} </a>
                     </div>
                 );
             return <div className={classes}>
