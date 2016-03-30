@@ -1,7 +1,8 @@
-import Cycle from '@cycle/core';
 import {Observable} from 'rx';
 import {hJSX} from '@cycle/dom';
 import classNames from 'classnames';
+
+import SwapPage from './swap-page';
 
 export default function Header (sources) {
 
@@ -12,41 +13,9 @@ export default function Header (sources) {
         .mergeAll()
         .map(res => res.body.frontEnds)
         .startWith([]);
-
-    const swapPageEl = sources.DOM.select('.swap-page');
-    const active$ = Observable.merge(
-            swapPageEl.events('mouseenter'),
-            swapPageEl.events('mouseleave')
-        )
-        .filter(ev => ev.target.classList.contains('swap-page'))
-        .map(ev => {
-            return ev.type === 'mouseenter'
-        })
-        .startWith(false);
-
-
-    const swapPageVTree$ = Observable.combineLatest(frontEnds$, active$, (frontEnds, active) =>
-        {
-            let classes = classNames({
-                'swap-page': true,
-                'active': active
-            });
-            let repeat = Object.keys(frontEnds)
-                .map(frontEndKey => frontEnds[frontEndKey])
-                .map(frontEnd =>
-                    <div className="option">
-                        <a title={frontEnd.title} href={frontEnd.location}>{frontEnd.title} </a>
-                    </div>
-                );
-            return <div className={classes}>
-                    {repeat}
-                </div>;
-        })
-        .startWith(
-            <div className="swap-page">
-                <div className="option"><a>CycleJS </a></div>
-            </div>
-        );
+    
+    const swapPage = SwapPage({DOM: sources.DOM, options$: frontEnds$});
+    const swapPageVTree$ = swapPage.DOM;
 
     const vtree$ = swapPageVTree$
         .map( (swapPageVTree) =>

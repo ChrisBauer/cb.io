@@ -7860,10 +7860,6 @@
 	});
 	exports.default = Header;
 
-	var _core = __webpack_require__(1);
-
-	var _core2 = _interopRequireDefault(_core);
-
 	var _rx = __webpack_require__(2);
 
 	var _dom = __webpack_require__(6);
@@ -7871,6 +7867,10 @@
 	var _classnames = __webpack_require__(70);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _swapPage = __webpack_require__(71);
+
+	var _swapPage2 = _interopRequireDefault(_swapPage);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7884,50 +7884,8 @@
 	        return res.body.frontEnds;
 	    }).startWith([]);
 
-	    var swapPageEl = sources.DOM.select('.swap-page');
-	    var active$ = _rx.Observable.merge(swapPageEl.events('mouseenter'), swapPageEl.events('mouseleave')).filter(function (ev) {
-	        return ev.target.classList.contains('swap-page');
-	    }).map(function (ev) {
-	        return ev.type === 'mouseenter';
-	    }).startWith(false);
-
-	    var swapPageVTree$ = _rx.Observable.combineLatest(frontEnds$, active$, function (frontEnds, active) {
-	        var classes = (0, _classnames2.default)({
-	            'swap-page': true,
-	            'active': active
-	        });
-	        var repeat = Object.keys(frontEnds).map(function (frontEndKey) {
-	            return frontEnds[frontEndKey];
-	        }).map(function (frontEnd) {
-	            return (0, _dom.hJSX)(
-	                'div',
-	                { className: 'option' },
-	                (0, _dom.hJSX)(
-	                    'a',
-	                    { title: frontEnd.title, href: frontEnd.location },
-	                    frontEnd.title,
-	                    ' '
-	                )
-	            );
-	        });
-	        return (0, _dom.hJSX)(
-	            'div',
-	            { className: classes },
-	            repeat
-	        );
-	    }).startWith((0, _dom.hJSX)(
-	        'div',
-	        { className: 'swap-page' },
-	        (0, _dom.hJSX)(
-	            'div',
-	            { className: 'option' },
-	            (0, _dom.hJSX)(
-	                'a',
-	                null,
-	                'CycleJS '
-	            )
-	        )
-	    ));
+	    var swapPage = (0, _swapPage2.default)({ DOM: sources.DOM, options$: frontEnds$ });
+	    var swapPageVTree$ = swapPage.DOM;
 
 	    var vtree$ = swapPageVTree$.map(function (swapPageVTree) {
 	        return (0, _dom.hJSX)(
@@ -8017,6 +7975,111 @@
 			window.classNames = classNames;
 		}
 	})();
+
+/***/ },
+/* 71 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = SwapPage;
+
+	var _rx = __webpack_require__(2);
+
+	var _dom = __webpack_require__(6);
+
+	var _classnames = __webpack_require__(70);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function intent(sources) {
+	    var swapPageEl = sources.DOM.select('.swap-page');
+	    var active$ = _rx.Observable.merge(swapPageEl.events('mouseenter'), swapPageEl.events('mouseleave')).filter(function (ev) {
+	        return ev.target.classList.contains('swap-page');
+	    }).map(function (ev) {
+	        return ev.type === 'mouseenter';
+	    }).startWith(false);
+
+	    var anchor$ = sources.DOM.select('a').events('click').map(function (ev) {
+	        return ev.preventDefault() || ev;
+	    }).combineLatest(active$, function (ev, active) {
+	        return { el: ev.currentTarget, active: active };
+	    }).filter(function (_ref) {
+	        var active = _ref.active;
+	        return active === true;
+	    }).map(function (_ref2) {
+	        var el = _ref2.el;
+
+	        console.log(el);
+	    });
+
+	    return {
+	        active$: active$,
+	        options$: sources.options$
+	    };
+	}
+
+	function model(actions) {
+	    return _rx.Observable.combineLatest(actions.active$, actions.options$, function (active, options) {
+	        return { active: active, options: options };
+	    });
+	}
+
+	function view(state$) {
+	    var vtree$ = state$.map(function (_ref3) {
+	        var active = _ref3.active;
+	        var options = _ref3.options;
+
+	        var classes = (0, _classnames2.default)({
+	            'swap-page': true,
+	            'active': active
+	        });
+	        var repeat = Object.keys(options).map(function (key) {
+	            return options[key];
+	        }).map(function (option) {
+	            return (0, _dom.hJSX)(
+	                'div',
+	                { className: 'option' },
+	                (0, _dom.hJSX)(
+	                    'a',
+	                    { title: option.title, 'data-loc': option.location },
+	                    option.title,
+	                    ' '
+	                )
+	            );
+	        });
+	        return (0, _dom.hJSX)(
+	            'div',
+	            { className: classes },
+	            repeat
+	        );
+	    }).startWith((0, _dom.hJSX)(
+	        'div',
+	        { className: 'swap-page' },
+	        (0, _dom.hJSX)(
+	            'div',
+	            { className: 'option' },
+	            (0, _dom.hJSX)(
+	                'a',
+	                null,
+	                'CycleJS '
+	            )
+	        )
+	    ));
+
+	    return {
+	        DOM: vtree$
+	    };
+	}
+
+	function SwapPage(sources) {
+	    return view(model(intent(sources)));
+	}
 
 /***/ }
 /******/ ]);
