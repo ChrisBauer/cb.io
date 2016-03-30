@@ -3,20 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _webpack = require('webpack');
-
-var _webpack2 = _interopRequireDefault(_webpack);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var name = 'cb.io - CycleJS';
-
 exports.default = {
     entry: './src/js/app.js',
     output: {
         path: __dirname,
-        filename: 'bundle.js'
+        filename: 'dist/bundle.js'
     },
     module: {
         loaders: [{

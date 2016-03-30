@@ -1,12 +1,8 @@
-import webpack from 'webpack';
-
-let name = 'cb.io - CycleJS';
-
 export default {
     entry: './src/js/app.js',
     output: {
         path: __dirname,
-        filename: 'bundle.js'
+        filename: 'dist/bundle.js'
     },
     module: {
         loaders: [
