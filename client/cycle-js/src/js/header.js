@@ -26,7 +26,7 @@ export default function Header (sources) {
                 </div>
                 {swapPageVTree}
             </header>
-        )
+        );
 
     return {
         DOM: vtree$,

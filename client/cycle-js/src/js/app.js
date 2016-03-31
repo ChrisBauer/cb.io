@@ -1,16 +1,32 @@
 import Cycle from '@cycle/core';
+import {Observable} from 'rx';
 import {makeDOMDriver, hJSX} from '@cycle/dom';
 import {makeHTTPDriver} from '@cycle/http';
 import Header from './header';
+import Body from './body';
 
 function main (sources) {
 
-    const HeaderSinks = Header(sources);
-    const HeaderVTree = HeaderSinks.DOM;
+    const header = Header(sources);
+    const headerVTree$ = header.DOM;
+    
+    const body = Body(sources);
+    const bodyVTree$ = body.DOM;
+
+    const vtree$ = Observable.combineLatest(
+        headerVTree$,
+        bodyVTree$,
+        (hvtree, bvtree) => <div>
+            {hvtree}
+            {bvtree}
+        </div>
+    );
+
+    const http$ = Observable.merge(header.HTTP, body.HTTP);
 
     return {
-        DOM: HeaderVTree,
-        HTTP: HeaderSinks.HTTP
+        DOM: vtree$,
+        HTTP: http$
         /* DOM: sources.DOM.select('h4').events('click')
             .map(ev => 1)
             .startWith(0)

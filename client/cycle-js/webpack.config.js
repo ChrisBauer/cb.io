@@ -1,8 +1,9 @@
 export default {
     entry: './src/js/app.js',
     output: {
-        path: __dirname,
-        filename: 'dist/bundle.js'
+        path: __dirname + '/dist',
+        filename: 'bundle.js',
+        sourceMapFilename: '[file].map'
     },
     module: {
         loaders: [
