@@ -20,6 +20,9 @@ exports.default = {
                     pragma: 'hJSX'
                 }]]
             }
+        }, {
+            test: /\.json$/,
+            loader: 'json'
         }]
     }
 };
