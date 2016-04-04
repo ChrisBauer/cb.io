@@ -1,5 +1,5 @@
 import {Observable} from 'rx';
-import {h} from '@cycle/dom';
+import {hJSX} from '@cycle/dom';
 import marked from 'marked';
 import convertToVDom from 'html-to-vdom';
 import {VNode, VText} from 'virtual-dom';
@@ -12,6 +12,7 @@ export default function MarkdownSection ({DOM, HTTP, props$}) {
     let mdSource$ = HTTP
         //.combineLatest(props$, (res$, props) => ({res$, props}))
         .mergeAll()
+        // filter out other response streams
         .combineLatest(props$, (res, props) => ({res, props}))
         .filter(({res, props}) => res.request.url === props.url)
         .map(({res}) => res.body.content)
@@ -19,11 +20,11 @@ export default function MarkdownSection ({DOM, HTTP, props$}) {
         .startWith('<div></div>')
         .map(md => convertHTML(md));
 
-    const vtree$ = Observable.combineLatest(mdSource$, props$, (mdSource, props) => {
-        return h('section.' + props.name.toLowerCase(), [
-            mdSource
-            ]);
-    });
+    const vtree$ = Observable.combineLatest(mdSource$, props$, (mdSource, props) =>
+        <section className={props.name.toLowerCase()}>
+            {mdSource}
+        </section>
+    );
 
 
     return {
