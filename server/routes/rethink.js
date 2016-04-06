@@ -4,19 +4,21 @@ var r = require('rethinkdb');
 
 
 var connectionInfo = {
-    host: 'localhost',
+    host: 'http://chrisbauer.io',
     port: 28015
 };
 var conn,
 	resumeTable,
 	aboutTable,
-	frontEndsTable;
+	frontEndsTable,
+	experienceTable;
 
 r.connect(connectionInfo).then(function (c) {
     conn = c;
     resumeTable = r.db('cbio').table('resume');
 	aboutTable = r.db('cbio').table('about');
 	frontEndsTable = r.db('cbio').table('frontEnds');
+	experienceTable = r.db('cbio').table('experience');
     console.log('connected');
 });
 
@@ -38,6 +40,19 @@ router.get('/resume', function (req, res, next) {
 router.get('/about', function (req, res, next) {
 	console.log('received request at /about');
 	aboutTable.orderBy({index: r.desc('tstamp')}).limit(1).run(conn)
+		.then(function (cursor) {
+			cursor.toArray(function (e, about) {
+				res.json(about[0]);
+			});
+		})
+		.catch(function (e) {
+			res.status(500).json(e).end();
+		});
+});
+
+router.get('/experience', function (req, res, next) {
+	console.log('received request at /experience');
+	experienceTable.orderBy({index: r.desc('tstamp')}).limit(1).run(conn)
 		.then(function (cursor) {
 			cursor.toArray(function (e, about) {
 				res.json(about[0]);
