@@ -3,4 +3,5 @@ export const UrlConstants = {
     ABOUT_URL: '/about',
     RESUME_URL: '/resume',
     FRONT_ENDS_URL: '/frontEnds',
+    EXPERIENCE_URL: '/experience'
 }

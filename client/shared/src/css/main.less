@@ -238,54 +238,12 @@ section {
 	}
 }
 
-.swap-page, .progress-tracker {
-    transition: padding 0.2s ease-in;
-    
-    padding-top: 20px; 
-    padding-bottom: 20px;
-    
-    
-    &.active {
-        padding-top: 0;
-        padding-bottom: 0;
-        border-bottom-width: 0;
-        .option {
-            cursor: pointer;
-            opacity: 1;
-            padding: 20px 0;
-            height: 60px;
-            border-width: 0 1px 1px 1px;
-            border-bottom-color: @border;
-        }
-    }
-    
-    .option {
-        transition: height 0.2s ease-in, padding 0.2s ease-in, opacity 0.2s ease-in;
-        height: 0;
-        opacity: 0;
-        background-color: @header;
-        overflow: hidden;
-        text-align: center;
-        padding: 0;
-        border-radius: 0;
-        border-width: 0 1px;
-        margin-left: -1px;
-        
-        line-height: initial;
-        
-        &:last-child {
-            border-radius: 0 0 4px 4px;
-            border-bottom-color: @border;
-        }
-    }
-}
-
 .swap-page {
     .option {
         &:first-child {
             opacity: 1;
-            padding: 20px 0;
-            height: 60px;
+            height: 100px;
+            line-height: 100px;
 
             a {
                 pointer-events: none;
@@ -306,8 +264,8 @@ section {
     .option {
         &.selected {
             opacity: 1;
-            padding: 20px 0;
-            height: 60px;
+            line-height: 100px;
+            height: 100px;
 
             &:after {
                 content: "\25BC";
@@ -318,18 +276,58 @@ section {
             }
         }
     }
-    
+
     &.active {
         .option.selected:after{
             content: "";
         }
         .option:first-child:after {
-                content: "\25BC";
-                font-size: 0.5em;
-                display: inline-block;
-                position: relative;
-                top: -0.25em;
-            }
+            content: "\25BC";
+            font-size: 0.5em;
+            display: inline-block;
+            position: relative;
+            top: -0.25em;
+        }
+    }
+}
+
+.swap-page, .progress-tracker {
+    transition: height 0.2s ease-in, line-height 0.2s ease-in;
+    
+    &.active {
+        padding-top: 0;
+        padding-bottom: 0;
+        border-bottom-width: 0;
+        .option {
+            cursor: pointer;
+            opacity: 1;
+            line-height: 60px;
+            height: 60px;
+            position: relative;
+            z-index: 10;
+            border-width: 0 1px 1px 1px;
+            border-bottom-color: @border;
+        }
+    }
+    
+    .option {
+        transition: height 0.2s ease-in, line-height 0.2s ease-in, opacity 0.2s ease-in;
+        height: 0;
+        opacity: 0;
+        background-color: @header;
+        overflow: hidden;
+        text-align: center;
+        padding: 0;
+        border-radius: 0;
+        border-width: 0 1px;
+        margin-left: -1px;
+        
+        line-height: 100px;
+        
+        &:last-child {
+            border-radius: 0 0 4px 4px;
+            border-bottom-color: @border;
+        }
     }
 }
 
@@ -359,7 +357,7 @@ section {
 
         div {
             line-height: 60px;
-            width: 7em;
+            width: 7.5em;
         }
 
         .copy {
@@ -369,10 +367,11 @@ section {
         .progress-tracker, .swap-page {
             padding-top:0;
             padding-bottom: 0;
-            width: 7em;
+            width: 7.5em;
 
             .option.selected, .option:first-child {
                 max-height: 58px;
+                line-height:60px;
             }
         }
     }
