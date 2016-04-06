@@ -1,25 +1,29 @@
 <template>
-    <require from="components/markdown"></require>
-    <require from="components/header-wrapper"></require>
-	<require from="components/anchor"></require>
-    <header-wrapper></header-wrapper>
+  <require from="components/markdown"></require>
+  <require from="components/header-wrapper"></require>
+  <require from="components/anchor"></require>
+  <require from="components/markdown-value-converter"></require>
+  <header-wrapper></header-wrapper>
 
-    <div>
-        <section class="about">
-			<anchor anchor-id="about" anchor-title="About"></anchor>
-            <h3>About</h3>
-            <markdown src-url="${aboutUrl}"></markdown>
-        </section>
-        <section class="resume">
-		<anchor anchor-id="resume" anchor-title="Resume"></anchor>
-            <h3>Resume</h3>
-            <markdown src-url="${resumeUrl}"></markdown>
-        </section>
-		<!-- <section>
-			<a id="freelance"></a>
+  <div>
+    <section class="about">
+      <anchor anchor-id="about" anchor-title="About"></anchor>
+      <h3>About</h3>
+      <markdown src-url="${aboutUrl}"></markdown>
+    </section>
+    <section>
+      <h3>Work Experience</h3>
+    </section>
+    <section repeat.for="section of sections" class="${section.key}">
+      <anchor anchor-id="${section.key}" anchor-title="${section.title}"></anchor>
+      <h3>${section.title}</h3>
+      <div innerHTML.bind="section.content | markdown"></div>
+    </section>
+    <!-- <section>
+            <a id="freelance"></a>
             <h3>Freelance</h3>
             <p>
             </p>
-			</section> -->
-    </div>
+            </section> -->
+  </div>
 </template>
