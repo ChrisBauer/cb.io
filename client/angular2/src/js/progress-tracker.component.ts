@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {ScrollKeeper} from './scroll-keeper.service';
 import {Anchor} from './objects/anchor.class';
-import EventRegistrar from './shared/event-registrar';
+import EventRegistrar from 'event-registrar';
 
 @Component({
     selector: 'progress-tracker',

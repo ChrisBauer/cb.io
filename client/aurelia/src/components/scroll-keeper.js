@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-framework';
-import EventRegistrar from 'shared/event-registrar';
+import EventRegistrar from 'event-registrar';
 
 @inject(EventRegistrar)
 export class ScrollKeeper {

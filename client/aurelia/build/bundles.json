@@ -27,6 +27,7 @@
         "aurelia-logging-console",
         "marked",
         "watch-css-media",
+        "event-registrar",
         "rxjs",
         "shared/*"
       ],

@@ -1,6 +1,6 @@
 import {bindable, inject} from 'aurelia-framework';
 import {WatchCSSMedia} from 'watch-css-media';
-import EventRegistrar from 'shared/event-registrar';
+import EventRegistrar from 'event-registrar';
 import {StyleConstants} from '../Constants';
 
 const HEADER_TAG = 'header-wrapper';

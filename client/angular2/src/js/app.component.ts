@@ -11,7 +11,7 @@ import {ProgressTrackerComponent} from './progress-tracker.component';
 
 // Services
 import {ScrollKeeper} from './scroll-keeper.service';
-import EventRegistrar from './shared/event-registrar';
+import EventRegistrar from 'event-registrar';
 import {WatchCSSMedia} from 'watch-css-media';
 
 // Misc

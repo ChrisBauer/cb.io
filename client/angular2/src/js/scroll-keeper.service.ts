@@ -1,5 +1,5 @@
 import {Injectable} from 'angular2/core';
-import EventRegistrar from './shared/event-registrar';
+import EventRegistrar from 'event-registrar';
 import {Anchor} from './objects/anchor.class';
 
 @Injectable()

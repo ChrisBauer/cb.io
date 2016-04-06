@@ -15,6 +15,7 @@ System.config({
         'marked': 'node_modules/marked/marked.min',
         'rxjs/*': 'node_modules/rxjs/*',
 		'shared/*': '../../shared/src/js/*',
-        'watch-css-media': 'node_modules/watch-css-media/index'
+        'watch-css-media': 'node_modules/watch-css-media/index',
+        'event-registrar': 'node_modules/event-registrar/index'
     }
 });

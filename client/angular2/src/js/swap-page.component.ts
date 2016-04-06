@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {FrontEnd} from './objects/frontEnd.interface';
-import EventRegistrar from './shared/event-registrar';
+import EventRegistrar from 'event-registrar';
 
 @Component({
 	selector: 'swap-page',

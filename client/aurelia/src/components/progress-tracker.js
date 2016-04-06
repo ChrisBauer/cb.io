@@ -1,6 +1,6 @@
 import {inject} from 'aurelia-framework';
 import {ScrollKeeper} from './scroll-keeper';
-import EventRegistrar from 'shared/event-registrar';
+import EventRegistrar from 'event-registrar';
 
 @inject(ScrollKeeper, EventRegistrar)
 export class ProgressTracker {

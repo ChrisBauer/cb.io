@@ -1,5 +1,5 @@
 import {Injector} from 'js-di';
-import EventRegistrar from '../../../dist/js/event-registrar';
+import EventRegistrar from 'event-registrar';
 import {ScrollKeeper} from './scroll-keeper';
 import {WatchCSSMedia} from 'watch-css-media';
 

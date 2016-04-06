@@ -1,5 +1,5 @@
 import {bindable, inject} from 'aurelia-framework';
-import EventRegistrar from 'shared/event-registrar';
+import EventRegistrar from 'event-registrar';
 
 @bindable('frontEnds')
 @inject(EventRegistrar)

@@ -3,7 +3,7 @@ import {FrontEnd} from './objects/frontEnd.interface';
 import {ProgressTrackerComponent} from './progress-tracker.component';
 import {SwapPageComponent} from './swap-page.component';
 import {StyleConstants} from './Constants';
-import EventRegistrar from './shared/event-registrar';
+import EventRegistrar from 'event-registrar';
 import {WatchCSSMedia} from 'watch-css-media';
 
 const HEADER_CLASS : string = 'static-header';

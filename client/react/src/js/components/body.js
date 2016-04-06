@@ -39,12 +39,13 @@ export default function Body () {
             };
         },
         render: function () {
+            let i = 1;
             const sections = this.state.sections.map(section => (
-                <Section title={section.title} mdContent={section.content} />
+                <Section key={'section-' + i++} title={section.title} mdContent={section.content} />
             ));
             return (
                 <div>
-                    <Section title={this.state.about.title} mdContent={this.state.about.mdContent} />
+                    <Section key="section-0" title={this.state.about.title} mdContent={this.state.about.mdContent} />
                     <section><h3>Work Experience</h3></section>
                     {sections}
                 </div>
