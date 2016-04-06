@@ -48,11 +48,13 @@ import {FrontEnd} from './objects/frontEnd.interface';
 					<h3>About</h3>
 					<markdown [mdSrc]="aboutMD"></markdown>
 				</section>
-				<section class="resume">
-                    <anchor [anchorId]="'resume'" [anchorTitle]="'Resume'"></anchor>
-					<h3>Resume</h3>
-					<markdown [mdSrc]="resumeMD"></markdown>
-					<!-- <p>{{md}}</p> -->
+				<section>
+					<h3>Work Experience</h3>
+				</section>
+				<section *ngFor="#section of sections">
+					<anchor [anchorId]="section.key" [anchorTitle]="section.title"></anchor>
+					<h3>{{section.title}}</h3>
+					<markdown [mdSrc]="section.content"></markdown>
 				</section>
 				<!-- <section class="freelance">
 					<a id="freelance"></a>
@@ -66,7 +68,8 @@ import {FrontEnd} from './objects/frontEnd.interface';
 })
 export class AppComponent implements OnInit {
     public aboutMD: string = '';
-    public resumeMD : string = '';
+    //public resumeMD : string = '';
+	public sections : {key: string, content: string, title: string}[] = [];
     public frontEnds: FrontEnd[] = [];
 
 	constructor(private http: Http) {
@@ -80,10 +83,16 @@ export class AppComponent implements OnInit {
 				this.aboutMD = res.content;
 			});
             
-        this.http.get(UrlConstants.RETHINK_BASE_URL + UrlConstants.RESUME_URL)
+        // this.http.get(UrlConstants.RETHINK_BASE_URL + UrlConstants.RESUME_URL)
+			// .map(res => res.json())
+			// .subscribe(res => {
+			// 	this.resumeMD = res.content;
+			// });
+
+		this.http.get(UrlConstants.RETHINK_BASE_URL + UrlConstants.EXPERIENCE_URL)
 			.map(res => res.json())
 			.subscribe(res => {
-				this.resumeMD = res.content;
+				this.sections = res.experience;
 			});
 		
 		this.http.get(UrlConstants.RETHINK_BASE_URL + UrlConstants.FRONT_ENDS_URL)
