@@ -4,12 +4,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Injector} from 'js-di';
 import headerC from './components/header';
-import sectionC from './components/section';
-import {UrlConstants} from './Constants';
+import bodyC from './components/body';
 
 
 const Header = Injector.invoke(headerC);
-const Section = Injector.invoke(sectionC);
+const Body = Injector.invoke(bodyC);
 
 
 ReactDOM.render(
@@ -21,8 +20,7 @@ ReactDOM.render(
 
 ReactDOM.render(
 	<div>
-		<Section title="About" contentUrl={UrlConstants.RETHINK_BASE_URL + UrlConstants.ABOUT_URL} />
-		<Section title="Resume" contentUrl={UrlConstants.RETHINK_BASE_URL + UrlConstants.RESUME_URL} />
+		<Body />
 	</div>,
 	document.getElementById('main')
 );
